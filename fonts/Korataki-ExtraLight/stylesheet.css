@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Korataki';
+    src: url('Korataki-ExtraLight.eot');
+    src: url('Korataki-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Korataki-ExtraLight.woff2') format('woff2'),
+        url('Korataki-ExtraLight.woff') format('woff'),
+        url('Korataki-ExtraLight.ttf') format('truetype'),
+        url('Korataki-ExtraLight.svg#Korataki-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
