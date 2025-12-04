@@ -1039,7 +1039,6 @@ html.fullscreen-mode #first::before {
       if (poem) {
         setTimeout(() => {
           poem.style.opacity = '1';
-          poem.style.transform = 'translateY(-50%) translateX(0)';
         }, 800);
       }
 
@@ -1047,14 +1046,12 @@ html.fullscreen-mode #first::before {
       if (author) {
         setTimeout(() => {
           author.style.opacity = '1';
-          author.style.transform = 'translateY(-50%) translateX(0)';
         }, 1600);
       }
 
       const esse = document.querySelector('.poem-esse');
       if (esse) {
         setTimeout(() => {
-          esse.style.transform = 'translateY(0)';
           updatePoemEssePosition();
         }, 2200);
       }
@@ -1063,7 +1060,6 @@ html.fullscreen-mode #first::before {
       if (mamik) {
         setTimeout(() => {
           mamik.style.opacity = '0.8';
-          mamik.style.transform = 'translateY(0)';
         }, 1600);
       }
     });
