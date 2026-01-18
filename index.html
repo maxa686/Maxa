@@ -1076,37 +1076,28 @@ html.fullscreen-mode #first::before {
         }
 
         // Анимация для второго слайда
-        if (entry.target.id === 'second') {
+        if (entry.target.id === 'second' && entry.isIntersecting) {
           const teacherInfo = document.querySelector('.teacher-info');
           const resume = document.querySelector('.resume-link');
 
-          if (entry.isIntersecting) {
-            if (teacherInfo) {
-              setTimeout(() => {
-                teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
-              }, 300);
-            }
+          if (teacherInfo) {
+            setTimeout(() => {
+              teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
+            }, 300);
+          }
 
-            if (resume) {
-              setTimeout(() => {
-                resume.style.transform = 'translateY(0)';
-              }, 600);
-            }
-          } else {
-            // Сбрасываем при уходе (если нужно)
-            if (teacherInfo) {
-              teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
-            }
-            if (resume) {
-              resume.style.transform = 'translateY(1000px)';
-            }
+          if (resume) {
+            setTimeout(() => {
+              resume.style.transform = 'translateY(0)';
+            }, 600);
           }
         }
       });
     }, { threshold: 0.5 });
 
-    // Запускаем observer
+    // Наблюдаем за всеми слайдами
     sections.forEach(s => observer.observe(s));
+
 
     // ✅ Принудительная проверка видимости всех слайдов при старте
     setTimeout(() => {
@@ -1152,7 +1143,7 @@ html.fullscreen-mode #first::before {
       }, { passive: true });
     }
 
-  // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
+ // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
     window.addEventListener('load', () => {
       // 🔥 Принудительный скролл в начало
       document.documentElement.classList.add('no-smooth');
@@ -1217,7 +1208,7 @@ html.fullscreen-mode #first::before {
         }, 1000);
       }
 
-      // ✅ ПРОВЕРКА: если #second уже в зоне видимости при загрузке — запускаем анимацию вручную
+      // ✅ ПРОВЕРКА: если #second уже в зоне видимости — запускаем анимацию
       setTimeout(() => {
         const secondSlide = document.querySelector('#second');
         if (!secondSlide) return;
@@ -1225,33 +1216,24 @@ html.fullscreen-mode #first::before {
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
 
-        // Если второй слайд хотя бы на 20% в зоне видимости
+        // Если второй слайд хотя бы частично в зоне
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
-          const teacherInfo = document.querySelector('.teacher-info');
-          const resume = document.querySelector('.resume-link');
-
           if (teacherInfo) {
-            // Сбрасываем
-            teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
-            // Запускаем анимацию
             setTimeout(() => {
               teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
             }, 300);
           }
 
           if (resume) {
-            // Сбрасываем
-            resume.style.transform = 'translateY(1000px)';
-            // Запускаем анимацию
             setTimeout(() => {
               resume.style.transform = 'translateY(0)';
             }, 600);
           }
         }
       }, 100);
-
     });
-});
+    });
+
 </script>
 </body>
 </html>
