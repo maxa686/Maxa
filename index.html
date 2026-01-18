@@ -515,7 +515,7 @@ body.loaded .slide-title {
 }
 
 
-    /* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
+/* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
 .mamik-img {
   position: relative;
   overflow: hidden;
@@ -526,7 +526,7 @@ body.loaded .slide-title {
   z-index: 2;
 }
 
-/* Эффект "проявления" */
+/* Эффект "проявления" — ЧЁРНАЯ ПЛАШКА */
 .mamik-img::before {
   content: '';
   position: absolute;
@@ -538,12 +538,15 @@ body.loaded .slide-title {
   z-index: 1;
   transform: translateY(-100%);
   pointer-events: none;
-}
-
-.mamik-img.fade-in::before {
-  transform: translateY(100%);
+  /* ✅ Главное: transition ДОЛЬШЕ ЖИВЁТ */
   transition: transform 2.4s ease-out;
 }
+
+/* Анимация: плашка уходит вниз */
+.mamik-img.fade-in::before {
+  transform: translateY(100%);
+}
+
 
 
 
