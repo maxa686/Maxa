@@ -433,48 +433,45 @@ body.loaded .slide-title {
   font-family: 'Ethna', sans-serif;
   color: #e22e2e;
   text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
-  pointer-events: auto;
-  cursor: pointer;
-  user-select: none;
   white-space: nowrap;
   backface-visibility: hidden;
-  overflow: hidden;
+  z-index: 3;
+  user-select: none;
+  pointer-events: auto;
+  cursor: pointer;
   transform: translateY(1000px);
   transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  padding: 0 10px;
-  box-sizing: border-box;
-  z-index: 3;
+  overflow: hidden;
 }
 
-/* Hover-эффект */
-.poem-esse:hover {
+.poem-esse span {
+  display: block;
+  transition: color 0.1s ease;
+}
+
+.poem-esse::before {
+  content: "эссе на тему...";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   color: #fff;
-  text-shadow: 0 0 6px #fff, 0 0 12px rgba(255, 255, 255, 0.6);
+  text-shadow: none;
+  transition: width 0.8s ease;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
 }
 
+.poem-esse:hover::before {
+  width: 100%;
+}
 
-
-    .poem-esse::before {
-      content: "эссе на тему...";
-      position: absolute;
-      top: 0;
-      left: 10px;
-      width: 0%;
-      height: 100%;
-      color: #fff;
-      text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
-      transition: width 0.8s ease;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .poem-esse:hover::before {
-      width: 100%;
-      cursor: pointer;
-    }
-    .poem-esse.show {
+.poem-esse.show {
   transform: translateY(0);
 }
+
 
 
     .resume-link {
@@ -850,7 +847,7 @@ html.fullscreen-mode #first::before {
         Твои непослушные дети.<br>
         <span class="poem-author">М. Садовский.</span>
       </div>
-      <div class="poem-esse">эссе на тему...</div>
+      <div class="poem-esse"><span>эссе на тему...</span></div>
       <div class="slide-controls">
         <button class="fullscreen-btn">full</button>
         <button class="play-btn">play</button>
@@ -925,19 +922,7 @@ html.fullscreen-mode #first::before {
         }
       });
 
-      document.addEventListener('mouseout', (e) => {
-        const target = e.target;
-        if (
-          target.matches('a') ||
-          target.matches('.nav-line') ||
-          target.matches('.fullscreen-btn') ||
-          target.matches('.play-btn') ||
-          target.matches('.poem-esse')
-        ) {
-          cursor.classList.remove('hover');
-          dot.classList.remove('hover');
-        }
-      });
+
 
       document.querySelectorAll('a, .nav-line, .fullscreen-btn, .play-btn').forEach(el => {
         el.addEventListener('mouseenter', () => {
