@@ -427,17 +427,31 @@ body.loaded .slide-title {
 
 .poem-esse {
   position: absolute;
-  bottom: 18vh;           /* 18% от низа экрана */
-  left: 20px;             /* 20px от левого края */
-  font-family: 'Korataki', sans-serif;
-  font-size: 1.8vmin;
+  top: 70vh;
+  left: 30px;
+  font-size: 6vmin;
+  font-family: 'Ethna', sans-serif;
   color: #e22e2e;
-  transform: translateY(100%); /* изначально скрыт внизу */
-  transition: transform 0.8s ease-out;
-  z-index: 3;
-  pointer-events: none;
+  text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+  pointer-events: auto;
+  cursor: pointer;
   user-select: none;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transform: translateY(1000px);
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 0 10px;
+  box-sizing: border-box;
+  z-index: 3;
 }
+
+/* Hover-эффект */
+.poem-esse:hover {
+  color: #fff;
+  text-shadow: 0 0 6px #fff, 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
 
 
     .poem-esse::before {
