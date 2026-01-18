@@ -1076,41 +1076,51 @@ html.fullscreen-mode #first::before {
         }
 
         // Анимация для второго слайда
-        if (entry.target.id === 'second' && entry.isIntersecting) {
+        if (entry.target.id === 'second') {
           const teacherInfo = document.querySelector('.teacher-info');
           const resume = document.querySelector('.resume-link');
 
-          if (teacherInfo) {
-            setTimeout(() => {
-              teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
-            }, 300);
-          }
+          if (entry.isIntersecting) {
+            if (teacherInfo) {
+              setTimeout(() => {
+                teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
+              }, 300);
+            }
 
-          if (resume) {
-            setTimeout(() => {
-              resume.style.transform = 'translateY(0)';
-            }, 600);
+            if (resume) {
+              setTimeout(() => {
+                resume.style.transform = 'translateY(0)';
+              }, 600);
+            }
+          } else {
+            // Сбрасываем при уходе (если нужно)
+            if (teacherInfo) {
+              teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
+            }
+            if (resume) {
+              resume.style.transform = 'translateY(1000px)';
+            }
           }
         }
-
       });
     }, { threshold: 0.5 });
 
+    // Запускаем observer
     sections.forEach(s => observer.observe(s));
 
-    // === СЧЁТЧИК СЛАЙДОВ ===
-    const updateSlideCounter = () => {
-      const h = window.innerHeight;
-      for (let i = 0; i < sections.length; i++) {
-        const r = sections[i].getBoundingClientRect();
-        if (r.top < h * 0.5 && r.bottom > h * 0.5) {
-          if (currentSpan) currentSpan.textContent = i + 1;
-          break;
+    // ✅ Принудительная проверка видимости всех слайдов при старте
+    setTimeout(() => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const h = window.innerHeight;
+        if (rect.top < h * 0.5 && rect.bottom > h * 0.5) {
+          // Симулируем isIntersecting = true
+          observer.observe(section);
+          observer.unobserve(section); // чтобы не дублировать
         }
-      }
-    };
-    updateSlideCounter();
-    window.addEventListener('scroll', updateSlideCounter);
+      });
+    }, 100);
+
 
     // === ПОЗИЦИЯ "ЭССЕ" ===
     const updatePoemEssePosition = () => {
