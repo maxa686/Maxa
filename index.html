@@ -516,23 +516,16 @@ body.loaded .slide-title {
 
 
     /* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
-    .mamik-img {
-      position: relative;
-      overflow: hidden;
-      top: 20px;
-      right: 20px;
-      width: 50vmin;
-      max-width: 550px;
-      min-width: 60px;
-      height: auto;
-      opacity: 1; /* убираем возможный opacity: 0.9 */
-      z-index: 2;
-      pointer-events: none;
-      user-select: none;
-      transition: none;
-      transform: translate(0, 0);
-    }
-    /* Плёнка, которая проявляет фото */
+.mamik-img {
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: none;
+  pointer-events: none;
+  z-index: 2;
+}
+
 .mamik-img::before {
   content: '';
   position: absolute;
@@ -542,15 +535,15 @@ body.loaded .slide-title {
   bottom: 0;
   background: #000;
   transform: translateY(-100%);
-  transition: none;
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Анимация: плёнка уходит вниз */
 .mamik-img.fade-in::before {
   transform: translateY(100%);
   transition: transform 2.4s ease-out;
 }
+
 
     @media (max-width: 480px) {
       .mamik-img {
