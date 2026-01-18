@@ -458,6 +458,10 @@ body.loaded .slide-title {
       width: 100%;
       cursor: pointer;
     }
+    .poem-esse.show {
+  transform: translateY(0);
+}
+
 
     .resume-link {
   position: absolute;
@@ -1185,9 +1189,10 @@ html.fullscreen-mode #first::before {
       const esse = document.querySelector('.poem-esse');
       if (esse) {
         setTimeout(() => {
-          esse.style.transform = 'translateY(0)';
+          esse.classList.add('show');
         }, 2200);
       }
+
 
 
       const mamik = document.querySelector('.mamik-img');
