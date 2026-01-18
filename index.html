@@ -437,8 +437,8 @@ body.loaded .slide-title {
   backface-visibility: hidden;
   z-index: 3;
   user-select: none;
-  pointer-events: auto;
-  cursor: pointer;
+  pointer-events: auto; /* ✅ Включены события */
+  cursor: pointer;      /* ✅ Курсор-рука */
   transform: translateY(1000px);
   transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
@@ -446,7 +446,6 @@ body.loaded .slide-title {
 
 .poem-esse span {
   display: block;
-  transition: color 0.1s ease;
 }
 
 .poem-esse::before {
@@ -461,7 +460,7 @@ body.loaded .slide-title {
   transition: width 0.8s ease;
   overflow: hidden;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: none; /* ✅ Главное! */
 }
 
 .poem-esse:hover::before {
@@ -471,6 +470,8 @@ body.loaded .slide-title {
 .poem-esse.show {
   transform: translateY(0);
 }
+
+
 
 
 
@@ -527,7 +528,7 @@ body.loaded .slide-title {
       z-index: 1;
       pointer-events: none;
       user-select: none;
-      transition: opacity 1.8s ease, transform 0.8s ease;
+      transition: none;
       transform: translateY(-10px);
     }
 
@@ -908,6 +909,7 @@ html.fullscreen-mode #first::before {
         targetY = e.clientY;
       });
 
+      // Универсальный hover через mouseover/mouseout (покрывает динамические элементы)
       document.addEventListener('mouseover', (e) => {
         const target = e.target;
         if (
@@ -915,26 +917,64 @@ html.fullscreen-mode #first::before {
           target.matches('.nav-line') ||
           target.matches('.fullscreen-btn') ||
           target.matches('.play-btn') ||
-          target.matches('.poem-esse')
+          target.closest('.poem-esse') ||
+          target.matches('.resume-link')
         ) {
           cursor.classList.add('hover');
           dot.classList.add('hover');
         }
       });
 
-
-
-      document.querySelectorAll('a, .nav-line, .fullscreen-btn, .play-btn').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          cursor.classList.add('hover');
-          dot.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
+      document.addEventListener('mouseout', (e) => {
+        const target = e.target;
+        if (
+          target.matches('a') ||
+          target.matches('.nav-line') ||
+          target.matches('.fullscreen-btn') ||
+          target.matches('.play-btn') ||
+          target.closest('.poem-esse') ||
+          target.matches('.resume-link')
+        ) {
           cursor.classList.remove('hover');
           dot.classList.remove('hover');
-        });
+        }
       });
     }
+
+    // === ПАРАЛЛАКС ДЛЯ .mamik-img ===
+    const mamik = document.querySelector('.mamik-img');
+    if (mamik && !isTouchDevice) {
+      const range = 15; // Максимальное смещение в пикселях
+      let targetX = 0, targetY = 0;
+      let currentX = 0, currentY = 0;
+      const ease = 0.07; // Плавность (меньше = плавнее)
+
+      const animate = () => {
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+
+      mamik.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.03)`;
+
+
+        requestAnimationFrame(animate);
+      };
+      animate();
+
+      document.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+
+        // Нормализуем позицию мыши: от -0.5 до 0.5
+        const x = clientX / innerWidth - 0.5;
+        const y = clientY / innerHeight - 0.5;
+
+        // Целевое смещение
+        targetX = -x * range;
+        targetY = -y * range;
+      });
+    }
+
+
 
     // === ПАНЕЛЬ УПРАВЛЕНИЯ ===
     const controls = document.querySelector('.slide-controls');
@@ -961,7 +1001,7 @@ html.fullscreen-mode #first::before {
       updateScrollProgress();
     }
 
-    // === НАВИГАЦИЯ ===
+    // === НАВИГАЦИЯ (плавное смещение ссылок) ===
     const navLines = document.querySelectorAll('.nav-line');
     const maxTranslateX = -20;
     const threshold = 60;
@@ -1072,7 +1112,7 @@ html.fullscreen-mode #first::before {
     // === ОБЩИЙ НАБЛЮДАТЕЛЬ ЗА СЛАЙДАМИ ===
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        // Навигация
+        // Навигация по активному слайду
         if (entry.isIntersecting) {
           links.forEach(l => l.classList.remove('active'));
           const link = document.querySelector(`.nav-line[href="#${entry.target.id}"]`);
@@ -1100,8 +1140,6 @@ html.fullscreen-mode #first::before {
     }, { threshold: 0.5 });
 
     sections.forEach(s => observer.observe(s));
-
-
 
     // === УПРАВЛЕНИЕ ЗАГОЛОВКОМ ===
     let lastScrollY = window.scrollY;
@@ -1138,7 +1176,7 @@ html.fullscreen-mode #first::before {
 
     // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
     window.addEventListener('load', () => {
-      // 🔥 Принудительный скролл в начало
+      // Принудительный скролл в начало
       document.documentElement.classList.add('no-smooth');
       window.scrollTo(0, 0);
       requestAnimationFrame(() => {
@@ -1157,7 +1195,7 @@ html.fullscreen-mode #first::before {
         }
       }, 1500);
 
-      // ✅ СБРОС: возвращаем элементы второго слайда в начальное положение
+      // Сброс: второй слайд
       const teacherInfo = document.querySelector('.teacher-info');
       const resume = document.querySelector('.resume-link');
 
@@ -1168,7 +1206,7 @@ html.fullscreen-mode #first::before {
         resume.style.transform = 'translateY(1000px)';
       }
 
-      // ✅ Анимация стиха
+      // Анимация стиха
       const poem = document.querySelector('.poem-text');
       if (poem) {
         setTimeout(() => {
@@ -1185,6 +1223,7 @@ html.fullscreen-mode #first::before {
         }, 1600);
       }
 
+      // Анимация "эссе на тему..."
       const esse = document.querySelector('.poem-esse');
       if (esse) {
         setTimeout(() => {
@@ -1192,8 +1231,7 @@ html.fullscreen-mode #first::before {
         }, 2200);
       }
 
-
-
+      // Анимация мамы
       const mamik = document.querySelector('.mamik-img');
       if (mamik) {
         setTimeout(() => {
@@ -1202,21 +1240,18 @@ html.fullscreen-mode #first::before {
         }, 1000);
       }
 
-      // ✅ ПРОВЕРКА: если #second уже в зоне видимости — запускаем анимацию
+      // Проверка: если второй слайд уже виден → запустить анимацию
       setTimeout(() => {
         const secondSlide = document.querySelector('#second');
         if (!secondSlide) return;
-
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
-
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
           if (teacherInfo) {
             setTimeout(() => {
               teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
             }, 300);
           }
-
           if (resume) {
             setTimeout(() => {
               resume.style.transform = 'translateY(0)';
@@ -1225,8 +1260,9 @@ html.fullscreen-mode #first::before {
         }
       }, 100);
     });
-  }); // ← закрывающая скобка для DOMContentLoaded
+  });
 </script>
+
 
 </body>
 </html>
