@@ -341,6 +341,7 @@ a:after {
   left: 2%;
   font-family: 'Korataki', sans-serif;
   font-size: 8vmin;
+  font-weight: 900;
   color: #f1c3c3;
 
   /* Длинная светлая тень — как свечение */
@@ -365,6 +366,13 @@ a:after {
   34px 34px 1px rgba(255, 255, 255, 0.003),
   36px 36px 1px rgba(255, 255, 255, 0.00225),
   38px 38px 1px rgba(255, 255, 255, 0.0015);
+
+  /* ✅ ВНУТРЕННЯЯ ОБВОДКА */
+    color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .4px #e22e2e;
+
+
 
   /* Остальные стили */
   margin: 0;
@@ -417,27 +425,20 @@ body.loaded .slide-title {
       margin-top: 0.3em;
     }
 
-    .poem-esse {
-      position: absolute;
-      top: 52vh;
-      left: 40px;
-      font-size: 6vmin;
-      font-family: 'Ethna', sans-serif;
-      color: #e22e2e;
-      text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
-      pointer-events: auto;
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
-      backface-visibility: hidden;
-      overflow: hidden;
-      transform: translateY(1000px);
-      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      padding: 0 10px;
-      box-sizing: border-box;
-      z-index: 2;
-      cursor: pointer;
-    }
+.poem-esse {
+  position: absolute;
+  bottom: 18vh;           /* 18% от низа экрана */
+  left: 20px;             /* 20px от левого края */
+  font-family: 'Korataki', sans-serif;
+  font-size: 1.8vmin;
+  color: #e22e2e;
+  transform: translateY(100%); /* изначально скрыт внизу */
+  transition: transform 0.8s ease-out;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+}
+
 
     .poem-esse::before {
       content: "эссе на тему...";
@@ -460,8 +461,8 @@ body.loaded .slide-title {
 
     .resume-link {
   position: absolute;
-  top: 82vh;
-  left: 40px;
+  top: 70vh;
+  left: 30px;
   font-size: 6vmin;
   font-family: 'Ethna', sans-serif;
   color: #e22e2e;
@@ -1095,34 +1096,9 @@ html.fullscreen-mode #first::before {
       });
     }, { threshold: 0.5 });
 
-    // Наблюдаем за всеми слайдами
     sections.forEach(s => observer.observe(s));
 
 
-    // ✅ Принудительная проверка видимости всех слайдов при старте
-    setTimeout(() => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const h = window.innerHeight;
-        if (rect.top < h * 0.5 && rect.bottom > h * 0.5) {
-          // Симулируем isIntersecting = true
-          observer.observe(section);
-          observer.unobserve(section); // чтобы не дублировать
-        }
-      });
-    }, 100);
-
-
-    // === ПОЗИЦИЯ "ЭССЕ" ===
-    const updatePoemEssePosition = () => {
-      const esse = document.querySelector('.poem-esse');
-      if (esse) {
-        esse.style.top = '82vh';
-        esse.style.left = '20px';
-      }
-    };
-    window.addEventListener('load', updatePoemEssePosition);
-    window.addEventListener('resize', updatePoemEssePosition);
 
     // === УПРАВЛЕНИЕ ЗАГОЛОВКОМ ===
     let lastScrollY = window.scrollY;
@@ -1143,7 +1119,21 @@ html.fullscreen-mode #first::before {
       }, { passive: true });
     }
 
- // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
+    // === СЧЁТЧИК СЛАЙДОВ ===
+    const updateSlideCounter = () => {
+      const h = window.innerHeight;
+      for (let i = 0; i < sections.length; i++) {
+        const r = sections[i].getBoundingClientRect();
+        if (r.top < h * 0.5 && r.bottom > h * 0.5) {
+          if (currentSpan) currentSpan.textContent = i + 1;
+          break;
+        }
+      }
+    };
+    updateSlideCounter();
+    window.addEventListener('scroll', updateSlideCounter);
+
+    // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
     window.addEventListener('load', () => {
       // 🔥 Принудительный скролл в начало
       document.documentElement.classList.add('no-smooth');
@@ -1192,13 +1182,12 @@ html.fullscreen-mode #first::before {
         }, 1600);
       }
 
-      const esse = document.querySelector('.poem-esse');
       if (esse) {
         setTimeout(() => {
           esse.style.transform = 'translateY(0)';
-          updatePoemEssePosition();
         }, 2200);
       }
+
 
       const mamik = document.querySelector('.mamik-img');
       if (mamik) {
@@ -1216,7 +1205,6 @@ html.fullscreen-mode #first::before {
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
 
-        // Если второй слайд хотя бы частично в зоне
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
           if (teacherInfo) {
             setTimeout(() => {
@@ -1232,8 +1220,8 @@ html.fullscreen-mode #first::before {
         }
       }, 100);
     });
-    });
-
+  }); // ← закрывающая скобка для DOMContentLoaded
 </script>
+
 </body>
 </html>
