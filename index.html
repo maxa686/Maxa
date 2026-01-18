@@ -1163,6 +1163,17 @@ html.fullscreen-mode #first::before {
         }
       }, 1500);
 
+      // ✅ СБРОС: возвращаем элементы второго слайда в начальное положение
+      const teacherInfo = document.querySelector('.teacher-info');
+      const resume = document.querySelector('.resume-link');
+
+      if (teacherInfo) {
+        teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
+      }
+      if (resume) {
+        resume.style.transform = 'translateY(1000px)';
+      }
+
       // ✅ Анимация стиха
       const poem = document.querySelector('.poem-text');
       if (poem) {
@@ -1196,20 +1207,7 @@ html.fullscreen-mode #first::before {
         }, 1000);
       }
 
-      // ✅ СБРОС анимаций
-      const teacherInfo = document.querySelector('.teacher-info');
-      const resume = document.querySelector('.resume-link');
-
-      if (teacherInfo) {
-        teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
-        teacherInfo.classList.remove('animate-in');
-      }
-      if (resume) {
-        resume.style.transform = 'translateY(1000px)';
-        resume.classList.remove('animate-in');
-      }
-
-      // ✅ Проверка видимости #second через 100мс
+      // ✅ ПРОВЕРКА: виден ли второй слайд СЕЙЧАС?
       setTimeout(() => {
         const secondSlide = document.querySelector('#second');
         if (!secondSlide) return;
@@ -1217,12 +1215,14 @@ html.fullscreen-mode #first::before {
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
 
+        // Если второй слайд хотя бы частично в зоне видимости
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
           if (teacherInfo) {
             setTimeout(() => {
               teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
             }, 300);
           }
+
           if (resume) {
             setTimeout(() => {
               resume.style.transform = 'translateY(0)';
@@ -1231,9 +1231,7 @@ html.fullscreen-mode #first::before {
         }
       }, 100);
     });
-
-
-  });
+});
 </script>
 </body>
 </html>
