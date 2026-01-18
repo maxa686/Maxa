@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Кастомный курсор + инверсия</title>
+  <title>MaxaPupsa</title>
   <link rel="preload" href="fonts/Rahovets/Rahovets.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
@@ -676,7 +676,9 @@ body.loaded .slide-title {
   transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-
+.teacher-info.animate-in {
+  transform: translateY(-50%) translateX(0);
+}
 
 
 
@@ -1090,6 +1092,7 @@ html.fullscreen-mode #first::before {
             }, 600);
           }
         }
+
       });
     }, { threshold: 0.5 });
 
@@ -1160,7 +1163,7 @@ html.fullscreen-mode #first::before {
         }
       }, 1500);
 
-      // ✅ Анимация стиха — только на первом слайде
+      // ✅ Анимация стиха
       const poem = document.querySelector('.poem-text');
       if (poem) {
         setTimeout(() => {
@@ -1193,39 +1196,44 @@ html.fullscreen-mode #first::before {
         }, 1000);
       }
 
-      // ✅ === ПРОВЕРКА: виден ли второй слайд СЕЙЧАС? ===
-      // После window.scrollTo(0, 0)
-      const secondSlide = document.querySelector('#second');
-      if (secondSlide) {
+      // ✅ СБРОС анимаций
+      const teacherInfo = document.querySelector('.teacher-info');
+      const resume = document.querySelector('.resume-link');
+
+      if (teacherInfo) {
+        teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
+        teacherInfo.classList.remove('animate-in');
+      }
+      if (resume) {
+        resume.style.transform = 'translateY(1000px)';
+        resume.classList.remove('animate-in');
+      }
+
+      // ✅ Проверка видимости #second через 100мс
+      setTimeout(() => {
+        const secondSlide = document.querySelector('#second');
+        if (!secondSlide) return;
+
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
 
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
-          const teacherInfo = document.querySelector('.teacher-info');
-          const resume = document.querySelector('.resume-link');
-
           if (teacherInfo) {
             setTimeout(() => {
               teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
             }, 300);
           }
-
           if (resume) {
             setTimeout(() => {
               resume.style.transform = 'translateY(0)';
             }, 600);
           }
         }
-      }
-
+      }, 100);
     });
+
 
   });
 </script>
-
-
-
-
 </body>
-
 </html>
