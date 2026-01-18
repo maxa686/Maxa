@@ -1217,7 +1217,7 @@ html.fullscreen-mode #first::before {
         }, 1000);
       }
 
-      // ✅ ПРОВЕРКА: виден ли второй слайд СЕЙЧАС?
+      // ✅ ПРОВЕРКА: если #second уже в зоне видимости при загрузке — запускаем анимацию вручную
       setTimeout(() => {
         const secondSlide = document.querySelector('#second');
         if (!secondSlide) return;
@@ -1225,21 +1225,31 @@ html.fullscreen-mode #first::before {
         const rect = secondSlide.getBoundingClientRect();
         const h = window.innerHeight;
 
-        // Если второй слайд хотя бы частично в зоне видимости
+        // Если второй слайд хотя бы на 20% в зоне видимости
         if (rect.top < h * 0.8 && rect.bottom > h * 0.2) {
+          const teacherInfo = document.querySelector('.teacher-info');
+          const resume = document.querySelector('.resume-link');
+
           if (teacherInfo) {
+            // Сбрасываем
+            teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
+            // Запускаем анимацию
             setTimeout(() => {
               teacherInfo.style.transform = 'translateY(-50%) translateX(0)';
             }, 300);
           }
 
           if (resume) {
+            // Сбрасываем
+            resume.style.transform = 'translateY(1000px)';
+            // Запускаем анимацию
             setTimeout(() => {
               resume.style.transform = 'translateY(0)';
             }, 600);
           }
         }
       }, 100);
+
     });
 });
 </script>
