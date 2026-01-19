@@ -528,7 +528,6 @@ body.loaded .slide-title {
       z-index: 1;
       pointer-events: none;
       user-select: none;
-      /*transition: opacity 1.8s ease, transform 0.8s ease;*/
       transform: translateY(1000px);
     }
 
@@ -942,17 +941,14 @@ html.fullscreen-mode #first::before {
     }
 
 
-
-
     // === ПАРАЛЛАКС ДЛЯ .mamik-img ===
     const mamik = document.querySelector('.mamik-img');
     if (mamik && !isTouchDevice) {
-      const range = 10; // Максимальное смещение в пикселях (можно потом поменять на 8–15)
+      const range = 10;
       let targetX = 0, targetY = 0;
       let currentX = 0, currentY = 0;
-      const ease = 0.07; // Плавность: меньше = плавнее
+      const ease = 0.07;
 
-      // Анимация
       const animate = () => {
         currentX += (targetX - currentX) * ease;
         currentY += (targetY - currentY) * ease;
@@ -961,16 +957,11 @@ html.fullscreen-mode #first::before {
       };
       animate();
 
-      // Следим за мышью
       document.addEventListener('mousemove', (e) => {
         const { clientX, clientY } = e;
         const { innerWidth, innerHeight } = window;
-
-        // Нормализуем позицию: от -0.5 до 0.5 (центр экрана = 0)
         const x = clientX / innerWidth - 0.5;
         const y = clientY / innerHeight - 0.5;
-
-        // Целевое смещение — в противоположную сторону
         targetX = -x * range;
         targetY = -y * range;
       });
