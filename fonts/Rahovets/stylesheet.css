@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Rahovets';
+    src: url('Rahovets.eot');
+    src: url('Rahovets.eot?#iefix') format('embedded-opentype'),
+        url('Rahovets.woff2') format('woff2'),
+        url('Rahovets.woff') format('woff'),
+        url('Rahovets.ttf') format('truetype'),
+        url('Rahovets.svg#Rahovets') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
