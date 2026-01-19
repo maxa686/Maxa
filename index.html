@@ -515,40 +515,22 @@ body.loaded .slide-title {
 }
 
 
-/* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
-.mamik-img {
-  position: relative;
-  overflow: hidden;
-  opacity: 1;
-  transform: translateY(1000px);
-  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Эффект "проявления" — ЧЁРНАЯ ПЛАШКА */
-.mamik-img::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #000;
-  z-index: 1;
-  transform: translateY(-100%);
-  pointer-events: none;
-  /* ✅ Главное: transition ДОЛЬШЕ ЖИВЁТ */
-  transition: transform 2.4s ease-out;
-}
-
-/* Анимация: плашка уходит вниз */
-.mamik-img.fade-in::before {
-  transform: translateY(100%);
-}
-
-
-
+    /* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
+    .mamik-img {
+      position: relative;
+      top: 20px;
+      right: 20px;
+      width: 50vmin;
+      max-width: 550px;
+      min-width: 60px;
+      height: auto;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+      /*transition: opacity 1.8s ease, transform 0.8s ease;*/
+      transform: translateY(1000px);
+    }
 
     @media (max-width: 480px) {
       .mamik-img {
@@ -695,13 +677,13 @@ body.loaded .slide-title {
   left: 40px;
   transform: translateY(-50%) translateX(-100vw);
   font-family: 'Ethna', sans-serif;
-  font-size: 6.2vmin;
+  font-size: 7.2vmin;
+  line-height: .7;
   color: #e22e2e;
   text-shadow:
     1px 1px 2px rgba(0, 0, 0, 0.4),
     0 0 10px rgba(255, 255, 255, 0.25),
     0 0 20px rgba(255, 255, 255, 0.15);
-  line-height: 0.6;
   white-space: pre-line;
   pointer-events: none;
   user-select: none;
@@ -959,34 +941,36 @@ html.fullscreen-mode #first::before {
       });
     }
 
+
+
+
     // === ПАРАЛЛАКС ДЛЯ .mamik-img ===
     const mamik = document.querySelector('.mamik-img');
     if (mamik && !isTouchDevice) {
-      const range = 15; // Максимальное смещение в пикселях
+      const range = 10; // Максимальное смещение в пикселях (можно потом поменять на 8–15)
       let targetX = 0, targetY = 0;
       let currentX = 0, currentY = 0;
-      const ease = 0.07; // Плавность (меньше = плавнее)
+      const ease = 0.07; // Плавность: меньше = плавнее
 
+      // Анимация
       const animate = () => {
         currentX += (targetX - currentX) * ease;
         currentY += (targetY - currentY) * ease;
-
-      mamik.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.03)`;
-
-
+        mamik.style.transform = `translate(${currentX}px, ${currentY}px)`;
         requestAnimationFrame(animate);
       };
       animate();
 
+      // Следим за мышью
       document.addEventListener('mousemove', (e) => {
         const { clientX, clientY } = e;
         const { innerWidth, innerHeight } = window;
 
-        // Нормализуем позицию мыши: от -0.5 до 0.5
+        // Нормализуем позицию: от -0.5 до 0.5 (центр экрана = 0)
         const x = clientX / innerWidth - 0.5;
         const y = clientY / innerHeight - 0.5;
 
-        // Целевое смещение
+        // Целевое смещение — в противоположную сторону
         targetX = -x * range;
         targetY = -y * range;
       });
@@ -1253,11 +1237,10 @@ html.fullscreen-mode #first::before {
       const mamik = document.querySelector('.mamik-img');
       if (mamik) {
         setTimeout(() => {
-          mamik.classList.add('fade-in');
+          mamik.style.opacity = '0.9';
           mamik.style.transform = 'translateY(0)';
         }, 1000);
       }
-
 
       // Проверка: если второй слайд уже виден → запустить анимацию
       setTimeout(() => {
