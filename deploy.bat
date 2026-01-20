@@ -3,38 +3,38 @@ echo.
 echo 🚀 Запускаю деплой...
 echo.
 
-:: Переход в папку, где лежит этот скрипт
+:: Переход в папку скрипта
 cd /d "%~dp0"
 
-:: Проверить, есть ли изменения
+:: Проверяем, есть ли изменения
 git diff-index --quiet HEAD --
-if %errorlevel% equ 0 (
+if %errorlevel% == 0 (
     echo 🔹 Нет изменений. Завершаю.
     echo.
     pause
     exit /b
 )
 
-:: Добавить все изменения
+:: Добавляем все изменения
 git add .
 
-:: Сделать коммит
+:: Делаем коммит с датой и временем
 for /f "tokens=2 delims==" %%i in ('wmic os get localdatetime /value') do set datetime=%%i
-set commit_msg=Деплой: %datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%
-git commit -m "%commit_msg%"
+set msg=Автодеплой: %datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%
+git commit -m "%msg%"
 
-:: Отправить в GitHub
-git push origin main
+:: Отправляем в GitHub
+git push
 
-:: Проверить, успешно ли всё
-if %errorlevel% equ 0 (
+:: Проверяем результат
+if %errorlevel% == 0 (
     echo.
     echo ✅ Деплой завершён!
-    echo 📦 Проверь: https://maxa686.github.io/Maxa
+    echo 🌐 Проверь: https://maxa686.github.io/Maxa
 ) else (
     echo.
     echo ❌ Ошибка при отправке!
-    echo    Проверь подключение или токен.
+    echo    Проверь интернет или токен.
 )
 
 echo.
