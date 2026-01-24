@@ -36,12 +36,13 @@
   <div class="slide-counter"><span class="current">1</span> / <span class="total">8</span></div>
 
   <div class="container">
+    <div id="bg-layer" aria-hidden="true"></div>
     <section id="first" class="slide">
       <h1 class="slide-title ">Истории учителя</h1>
       <div class="fixed-bg">
-<video muted loop playsinline preload="metadata" class="video-desktop">
+<video muted loop playsinline preload="metadata" poster="images/index/index_01.jpg" class="video-desktop">
 
-          <source src="video/index_01.mp4" type="video/mp4">
+          <source src="video/index_01.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="poem-text">
@@ -78,7 +79,7 @@
 
   <!-- Mamik вынесен ПОСЛЕ .container, чтобы не быть под слоями -->
   <img src="images/index/Mamik.png" alt="Мамик" class="mamik-img">
-<script src="/js/index/index.js" defer></script>
+<script src="js/index/index.js" defer></script>
 
 </body>
 </html>

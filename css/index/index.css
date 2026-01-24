@@ -81,7 +81,7 @@ html.no-smooth {
 
     html {
       height: 100%;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -91,6 +91,7 @@ html.no-smooth {
       background: #000;
       color: white;
       font-family: 'Montserrat Alternates', sans-serif;
+      overflow-x: hidden;
     }
 
     body::-webkit-scrollbar {
@@ -99,9 +100,10 @@ html.no-smooth {
 
     .container {
       position: relative;
+
       width: 100%;
       height: 100%;
-      overflow-x: hidden;
+      overflow-x: auto;
     }
 
     /* ================== КУРСОРЫ ================== */
@@ -281,20 +283,26 @@ a:after {
     .slide {
       position: sticky;
       top: 0;
-      height: 100vh;
+  min-height: 100vh;
+    height: auto;
+    position: relative;
+    /* или sticky — смотри ниже */
+
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+      background-attachment: scroll;
     }
 
+    /*
     #first {
       background-image: url('/images/index/index_01.jpg');
       position: relative;
     }
+      */
 
     #second {
       background-image: url('/images/index/index_02.jpg');
@@ -580,6 +588,7 @@ body.loaded .slide-title {
     }
 
     .fixed-bg {
+      background: url('/images/index/index_01.jpg') center/cover no-repeat !important;
       position: fixed;
       top: 0;
       left: 0;
