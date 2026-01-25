@@ -1,112 +1,125 @@
- /* ================== ПОДКЛЮЧЕНИЕ ШРИФТОВ ================== */
-    @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Huninn&family=Zen+Kurenaido&display=swap');
-
-    @font-face {
-      font-family: 'Rahovets';
-      src: url('/fonts/Rahovets/Rahovets.eot');
-      src: url('/fonts/Rahovets/Rahovets.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/Rahovets/Rahovets.woff2') format('woff2'),
-        url('/fonts/Rahovets/Rahovets.woff') format('woff'),
-        url('/fonts/Rahovets/Rahovets.ttf') format('truetype'),
-        url('/fonts/Rahovets/Rahovets.svg#Rahovets') format('svg');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Ethna';
-      src: url('/fonts/Ethna-Thin/Ethna-Thin.eot');
-      src: url('/fonts/Ethna-Thin/Ethna-Thin.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/Ethna-Thin/Ethna-Thin.woff2') format('woff2'),
-        url('/fonts/Ethna-Thin/Ethna-Thin.woff') format('woff'),
-        url('/fonts/Ethna-Thin/Ethna-Thin.ttf') format('truetype'),
-        url('/fonts/Ethna-Thin/Ethna-Thin.svg#Ethna-Thin') format('svg');
-      font-weight: 100;
-      font-style: normal;
-      font-display: swap;
-    }
+/* ================== ПОДКЛЮЧЕНИЕ ШРИФТОВ ================== */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Huninn&family=Zen+Kurenaido&display=swap');
 
 @font-face {
-    font-family: 'Korataki';
-    src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot');
-    src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff2') format('woff2'),
-        url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff') format('woff'),
-        url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.ttf') format('truetype'),
-        url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.svg#Korataki-ExtraLight') format('svg');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Rahovets';
+  src: url('/fonts/Rahovets/Rahovets.eot');
+  src: url('/fonts/Rahovets/Rahovets.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Rahovets/Rahovets.woff2') format('woff2'),
+    url('/fonts/Rahovets/Rahovets.woff') format('woff'),
+    url('/fonts/Rahovets/Rahovets.ttf') format('truetype'),
+    url('/fonts/Rahovets/Rahovets.svg#Rahovets') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'Ethna';
+  src: url('/fonts/Ethna-Thin/Ethna-Thin.eot');
+  src: url('/fonts/Ethna-Thin/Ethna-Thin.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.woff2') format('woff2'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.woff') format('woff'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.ttf') format('truetype'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.svg#Ethna-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korataki';
+  src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot');
+  src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff2') format('woff2'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff') format('woff'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.ttf') format('truetype'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.svg#Korataki-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'mr_akronimg';
+  src: url('/fonts/mr_akronimg/mr_akronimg.eot');
+  src: url('/fonts/mr_akronimg/mr_akronimg.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/mr_akronimg/mr_akronimg.woff2') format('woff2'),
+    url('/fonts/mr_akronimg/mr_akronimg.woff') format('woff'),
+    url('/fonts/mr_akronimg/mr_akronimg.ttf') format('truetype'),
+    url('/fonts/mr_akronimg/mr_akronimg.svg#mr_akronimg') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
 html.no-smooth {
   scroll-behavior: auto;
 }
 
-    /* ================== ЭФФЕКТ ПЛАВНОЙ ЗАГРУЗКИ ================== */
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #061314;
-      z-index: 99999;
-      pointer-events: none;
-      opacity: 1;
-      transition: opacity 1.2s ease-out 0.3s;
-    }
+/* ================== ЭФФЕКТ ПЛАВНОЙ ЗАГРУЗКИ ================== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #061314;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1.2s ease-out 0.3s;
+}
 
-    .loading-overlay.fade-out {
-      opacity: 0;
-    }
+.loading-overlay.fade-out {
+  opacity: 0;
+}
 
-    body {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1.2s ease-out, visibility 1.2s;
-    }
+body {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-out, visibility 1.2s;
+}
 
-    body.loaded {
-      opacity: 1;
-      visibility: visible;
-    }
+body.loaded {
+  opacity: 1;
+  visibility: visible;
+}
 
-    /* ================== ОБЩИЕ СТИЛИ ================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* ================== ОБЩИЕ СТИЛИ ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    html {
-      height: 100%;
-      scroll-behavior: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
+html {
+  height: 100%;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-    body {
-      min-height: 100vh;
-      background: #000;
-      color: white;
-      font-family: 'Montserrat Alternates', sans-serif;
-      overflow-x: hidden;
-    }
+body {
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  font-family: 'Montserrat Alternates', sans-serif;
+  overflow-x: hidden;
+}
 
-    body::-webkit-scrollbar {
-      display: none;
-    }
+body::-webkit-scrollbar {
+  display: none;
+}
 
-    .container {
-      position: relative;
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+}
 
-      width: 100%;
-      height: 100%;
-      overflow-x: auto;
-    }
-
-    /* ================== КУРСОРЫ ================== */
+/* ================== КУРСОРЫ ================== */
 html.no-touch {
   cursor: none;
 }
@@ -115,224 +128,272 @@ html.fullscreen-mode {
   cursor: auto;
 }
 
+/* ================== РЕЖИМ ПОЛНОГО ЭКРАНА ================== */
+html.fullscreen-mode {
+  cursor: none;
+}
 
-    /* ================== РЕЖИМ ПОЛНОГО ЭКРАНА ================== */
-    html.fullscreen-mode {
-      cursor: none;
-    }
+html.fullscreen-mode body {
+  overflow: hidden;
+}
 
-    html.fullscreen-mode body {
-      overflow: hidden;
-    }
+html.fullscreen-mode .navigation,
+html.fullscreen-mode .slide-counter,
+html.fullscreen-mode .slide-title,
+html.fullscreen-mode .poem-text,
+html.fullscreen-mode .poem-esse,
+html.fullscreen-mode .mamik-img {
+  display: none !important;
+}
 
-    html.fullscreen-mode .navigation,
-    html.fullscreen-mode .slide-counter,
-    html.fullscreen-mode .slide-title,
-    html.fullscreen-mode .poem-text,
-    html.fullscreen-mode .poem-esse,
-    html.fullscreen-mode .mamik-img {
-      display: none !important;
-    }
+.slide-counter {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
 
-    .slide-counter {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s ease;
-    }
+/* ================== КАСТОМНЫЙ КУРСОР ================== */
+html.touch-device .custom-cursor,
+html.touch-device .cursor-dot {
+  display: none !important;
+}
 
-    /* ================== КАСТОМНЫЙ КУРСОР ================== */
-    html.touch-device .custom-cursor,
-    html.touch-device .cursor-dot {
-      display: none !important;
-    }
+.custom-cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+  transition: transform 0.1s ease, background 0.1s ease, opacity 0.2s ease;
+}
 
-    .custom-cursor {
-      position: fixed;
-      width: 30px;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      transform-origin: center;
-      transition: transform 0.1s ease, background 0.1s ease, opacity 0.2s ease;
-    }
+.custom-cursor.hover {
+  background: rgba(226, 46, 46, 0.6);
+}
 
-    .custom-cursor.hover {
-      background: rgba(226, 46, 46, 0.6);
-    }
+.cursor-dot {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+}
 
-    .cursor-dot {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: #fff;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.7);
-      transition: box-shadow 0.2s ease, opacity 0.2s ease;
-    }
+.cursor-dot.hover {
+  box-shadow:
+    0 0 25px 8px rgba(255, 255, 255, 0.9),
+    0 0 40px 12px rgba(255, 255, 255, 0.7),
+    0 0 60px 16px rgba(226, 46, 46, 0.5);
+}
 
-    .cursor-dot.hover {
-      box-shadow:
-        0 0 25px 8px rgba(255, 255, 255, 0.9),
-        0 0 40px 12px rgba(255, 255, 255, 0.7),
-        0 0 60px 16px rgba(226, 46, 46, 0.5);
-    }
+/* ================== НАВИГАЦИЯ ================== */
+.navigation {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  z-index: 2;
+}
 
-    /* ================== НАВИГАЦИЯ ================== */
-    .navigation {
-      position: fixed;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      z-index: 2;
-    }
+.line-wrapper {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
 
-    .line-wrapper {
-      position: relative;
-      width: 40px;
-      height: 20px;
-    }
+.nav-line {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 2px;
+  background: white;
+  opacity: 0.8;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease;
+  transform-origin: right center;
+}
 
-    .nav-line {
-      position: absolute;
-      right: 0;
-      width: 30px;
-      height: 2px;
-      background: white;
-      opacity: 0.8;
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease;
-      transform-origin: right center;
-    }
+.nav-line:hover,
+.nav-line.active {
+  width: 70px;
+  background: #fff;
+  opacity: 1;
+  transform: translateX(-40px);
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.6);
+}
 
-    .nav-line:hover,
-    .nav-line.active {
-      width: 70px;
-      background: #fff;
-      opacity: 1;
-      transform: translateX(-40px);
-      box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.6);
-    }
+.nav-line.active::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #e22e2e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px rgba(226, 46, 46, 0.6);
+  animation: pulse 2s infinite;
+}
 
-    .nav-line.active::before {
-      content: '';
-      position: absolute;
-      left: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 6px;
-      height: 6px;
-      background: #e22e2e;
-      border-radius: 50%;
-      box-shadow: 0 0 8px 2px rgba(226, 46, 46, 0.6);
-      animation: pulse 2s infinite;
-    }
-    a {
-  /* position: relative задаёт контекст, относительно которого спозиционируется absolute-псевдоэлемент */
+a {
   position: relative;
 }
 
-a:after {
-  /* В нашем случае содержимое псевдоэлемента — content — пустое, но без этого свойства, хоть бы и пустого, псевдоэлемент не заработает */
+a::after {
   content: '';
   position: absolute;
-
-  /* Вытягиваем абсолютный псевдоэлемент на 5 пк за границы родителя — самого элемента */
   inset: -5px;
 }
 
-    .tooltip {
-      position: absolute;
-      right: 80px;
-      top: 50%;
-      transform: translateY(-50%) translateX(-10px);
-      white-space: nowrap;
-      font-size: 24px;
-      color: white;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease, transform 0.6s ease;
-    }
+.tooltip {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+  white-space: nowrap;
+  font-size: 24px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
 
-    .line-wrapper:hover .tooltip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(-24px);
-    }
+.line-wrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-24px);
+}
 
-    .tooltip-text {
-      display: inline-block;
-      transform: translateX(-100%);
-      opacity: 0;
-      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease 0.15s;
-    }
+.tooltip-text {
+  display: inline-block;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease 0.15s;
+}
 
-    .line-wrapper:hover .tooltip-text {
-      transform: translateX(0);
-      opacity: 1;
-    }
+.line-wrapper:hover .tooltip-text {
+  transform: translateX(0);
+  opacity: 1;
+}
 
-    /* ================== СЛАЙДЫ ================== */
-    .slide {
-      position: sticky;
-      top: 0;
+/* ================== СЛАЙДЫ ================== */
+.slide {
+  position: sticky;
+  top: 0;
   min-height: 100vh;
-    height: auto;
-    position: relative;
-    /* или sticky — смотри ниже */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
 
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-size: cover;
-      background-position: center;
-      background-attachment: scroll;
-    }
+/* Анимация заголовка H2 Моё творчество */
+.slide-creative-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0vmin;
+  color: #e22e2e;
+  font-family: 'mr_akronimg', sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  transition: font-size 1s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 1s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
 
-    /*
-    #first {
-      background-image: url('/images/index/index_01.jpg');
-      position: relative;
-    }
-      */
+.slide-creative-title.visible {
+  font-size: 16vmin;
+  opacity: 1;
+}
 
-    #second {
-      background-image: url('/images/index/index_02.jpg');
-    }
+.slide-creative-title::before {
+  content: "Моё творчество";
+  position: absolute;
+  top: 3.1vmin;/* ← масштабируется с шрифтом */
+    left: 0;
+    width: 0%;
+    height: 100%;
+  color: #fff;
+  text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+  transition: width 0.8s ease;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'mr_akronimg', sans-serif;
+  font-size: 16vmin;
+  font-weight: 400;
+  line-height: 1;
+}
 
-    #third {
-      background-image: url('/images/index/index_03.jpg');
-    }
+.slide-creative-title:hover::before {
+  width: 100%;
+}
 
-    #fourth {
-      background-image: url('/images/index/index_04.jpg');
-    }
+@media (max-width: 768px) {
+  .slide-creative-title {
+    font-size: 0vmin;
+  }
 
-    #fifth {
-      background-image: url('/images/index/index_05.jpg');
-    }
+  .slide-creative-title.visible {
+    font-size: 12vmin;
+  }
+}
 
-    #six {
-      background-image: url('/images/index/index_06.jpg');
-    }
+@media (max-width: 480px) {
+  .slide-creative-title.visible {
+    font-size: 8vmin;
+  }
+}
 
-    #seven {
-      background-image: url('/images/index/index_07.jpg');
-    }
+#second {
+  background-image: url('/images/index/index_02.jpg');
+}
 
-    #eight {
-      background-image: url('/images/index/index_08.jpg');
-    }
+#third {
+  background-image: url('/images/index/index_03.jpg');
+}
 
-    /* ================== ТЕКСТ Истории учителя ================== */
+#fourth {
+  background-image: url('/images/index/index_04.jpg');
+}
+
+#fifth {
+  background-image: url('/images/index/index_05.jpg');
+}
+
+#six {
+  background-image: url('/images/index/index_06.jpg');
+}
+
+#seven {
+  background-image: url('/images/index/index_07.jpg');
+}
+
+#eight {
+  background-image: url('/images/index/index_08.jpg');
+}
+
+/* ================== ТЕКСТ Истории учителя ================== */
 .slide-title {
   position: absolute;
   top: 0;
@@ -341,38 +402,30 @@ a:after {
   font-size: 8vmin;
   font-weight: 900;
   color: #f1c3c3;
-
-  /* Длинная светлая тень — как свечение */
- text-shadow:
-  1px 1px 8px rgba(255, 255, 255, 0.12),
-  2px 2px 1px rgba(255, 255, 255, 0.1125),
-  4px 4px 1px rgba(255, 255, 255, 0.105),
-  6px 6px 1px rgba(255, 255, 255, 0.0975),
-  8px 8px 1px rgba(255, 255, 255, 0.09),
-  10px 10px 1px rgba(255, 255, 255, 0.0825),
-  12px 12px 1px rgba(255, 255, 255, 0.075),
-  14px 14px 1px rgba(255, 255, 255, 0.0675),
-  16px 16px 1px rgba(255, 255, 255, 0.06),
-  18px 18px 1px rgba(255, 255, 255, 0.0525),
-  20px 20px 1px rgba(255, 255, 255, 0.045),
-  22px 22px 1px rgba(255, 255, 255, 0.0375),
-  24px 24px 1px rgba(255, 255, 255, 0.03),
-  26px 26px 1px rgba(255, 255, 255, 0.0225),
-  28px 28px 1px rgba(255, 255, 255, 0.015),
-  30px 30px 1px rgba(255, 255, 255, 0.0075),
-  32px 32px 1px rgba(255, 255, 255, 0.00375),
-  34px 34px 1px rgba(255, 255, 255, 0.003),
-  36px 36px 1px rgba(255, 255, 255, 0.00225),
-  38px 38px 1px rgba(255, 255, 255, 0.0015);
-
-  /* ✅ ВНУТРЕННЯЯ ОБВОДКА */
-    color: transparent;
+  text-shadow:
+    1px 1px 8px rgba(255, 255, 255, 0.12),
+    2px 2px 1px rgba(255, 255, 255, 0.1125),
+    4px 4px 1px rgba(255, 255, 255, 0.105),
+    6px 6px 1px rgba(255, 255, 255, 0.0975),
+    8px 8px 1px rgba(255, 255, 255, 0.09),
+    10px 10px 1px rgba(255, 255, 255, 0.0825),
+    12px 12px 1px rgba(255, 255, 255, 0.075),
+    14px 14px 1px rgba(255, 255, 255, 0.0675),
+    16px 16px 1px rgba(255, 255, 255, 0.06),
+    18px 18px 1px rgba(255, 255, 255, 0.0525),
+    20px 20px 1px rgba(255, 255, 255, 0.045),
+    22px 22px 1px rgba(255, 255, 255, 0.0375),
+    24px 24px 1px rgba(255, 255, 255, 0.03),
+    26px 26px 1px rgba(255, 255, 255, 0.0225),
+    28px 28px 1px rgba(255, 255, 255, 0.015),
+    30px 30px 1px rgba(255, 255, 255, 0.0075),
+    32px 32px 1px rgba(255, 255, 255, 0.00375),
+    34px 34px 1px rgba(255, 255, 255, 0.003),
+    36px 36px 1px rgba(255, 255, 255, 0.00225),
+    38px 38px 1px rgba(255, 255, 255, 0.0015);
+  color: transparent;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .4px #e22e2e;
-
-
-
-  /* Остальные стили */
   margin: 0;
   padding: 0;
   pointer-events: none;
@@ -386,42 +439,42 @@ a:after {
   opacity: 0;
   transition: transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1.4s ease-out;
 }
-/* ✅ АНИМАЦИЯ ПОЯВЛЕНИЯ */
+
 body.loaded .slide-title {
   opacity: 1;
   transform: translateY(0) translateZ(0) scale(0.90);
 }
+
 .slide-title.hidden {
   opacity: 0;
   transform: translateY(calc(-8vmin - 10px)) translateZ(0) scale(0.85);
 }
 
+.poem-text {
+  position: absolute;
+  top: 45%;
+  left: 40px;
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+  font-size: 8vmin;
+  font-family: 'Ethna', sans-serif;
+  color: #e22e2e;
+  text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+  white-space: pre-line;
+  text-align: left;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0.6;
+  max-width: 85vw;
+  transition: transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1.6s ease-out;
+  z-index: 2;
+}
 
-   .poem-text {
-      position: absolute;
-      top: 45%;
-      left: 40px;
-      transform: translateY(-50%) translateX(-100%);
-      opacity: 0;
-      font-size: 8vmin;
-      font-family: 'Ethna', sans-serif;
-      color: #e22e2e;
-      text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
-      white-space: pre-line;
-      text-align: left;
-      pointer-events: none;
-      user-select: none;
-      line-height: 0.6;
-      max-width: 85vw;
-      transition: transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1.6s ease-out;
-      z-index: 2;
-    }
-
-    .poem-text .poem-author {
-      display: block;
-      text-align: right;
-      margin-top: 0.3em;
-    }
+.poem-text .poem-author {
+  display: block;
+  text-align: right;
+  margin-top: 0.3em;
+}
 
 .poem-esse {
   position: absolute;
@@ -435,8 +488,8 @@ body.loaded .slide-title {
   backface-visibility: hidden;
   z-index: 3;
   user-select: none;
-  pointer-events: auto; /* ✅ Включены события */
-  cursor: pointer;      /* ✅ Курсор-рука */
+  pointer-events: auto;
+  cursor: pointer;
   transform: translateY(1000px);
   transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
@@ -458,7 +511,7 @@ body.loaded .slide-title {
   transition: width 0.8s ease;
   overflow: hidden;
   z-index: 1;
-  pointer-events: none; /* ✅ Главное! */
+  pointer-events: none;
 }
 
 .poem-esse:hover::before {
@@ -469,11 +522,7 @@ body.loaded .slide-title {
   transform: translateY(0);
 }
 
-
-
-
-
-    .resume-link {
+.resume-link {
   position: absolute;
   top: 70vh;
   left: 30px;
@@ -512,163 +561,167 @@ body.loaded .slide-title {
   width: 100%;
 }
 
+/* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
+.mamik-img {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50vmin;
+  max-width: 550px;
+  min-width: 60px;
+  height: auto;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 1.8s ease, transform 0.8s ease;
+  transform: translateY(-10px);
+}
 
-    /* ================== МАМИК — АДАПТИВНОЕ ИЗОБРАЖЕНИЕ ================== */
-    .mamik-img {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50vmin;
-      max-width: 550px;
-      min-width: 60px;
-      height: auto;
-      opacity: 0;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-      transition: opacity 1.8s ease, transform 0.8s ease;
-      transform: translateY(-10px);
-    }
+@media (max-width: 480px) {
+  .mamik-img {
+    top: 12px;
+    right: 12px;
+    width: 85vw;
+    max-width: 400px;
+  }
+}
 
-    @media (max-width: 480px) {
-      .mamik-img {
-        top: 12px;
-        right: 12px;
-        width: 85vw;
-        max-width: 400px;
-      }
-    }
+@media (max-width: 360px) {
+  .mamik-img {
+    top: 10px;
+    right: 10px;
+    width: 80vw;
+    max-width: 300px;
+  }
+}
 
-    @media (max-width: 360px) {
-      .mamik-img {
-        top: 10px;
-        right: 10px;
-        width: 80vw;
-        max-width: 300px;
-      }
-    }
+/* ================== ФИКСИРОВАННЫЙ ФОН ДЛЯ СЛАЙДОВ 2-8 ================== */
+.slide:not(#first) {
+  background-attachment: fixed;
+}
 
-    /* ================== ОСТАЛЬНЫЕ СТИЛИ ================== */
-    .slide-controls {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      z-index: 2;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
+/* ================== ОСТАЛЬНЫЕ СТИЛИ ================== */
+.slide-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
 
-    .slide-controls.visible {
-      opacity: 1;
-      visibility: visible;
-    }
+.slide-controls.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
-    .slide-controls button {
-      width: 100px;
-      height: 30px;
-      background: rgba(0, 0, 0, 0.2);
-      border: none;
-      border-radius: 15px;
-      color: white;
-      font-family: 'Montserrat Alternates', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: opacity 0.4s ease, background 0.4s ease;
-    }
+.slide-controls button {
+  width: 100px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
 
-    .slide-controls button:hover {
-      background: white;
-      opacity: 0.7;
-      color: black;
-    }
+.slide-controls button:hover {
+  background: white;
+  opacity: 0.7;
+  color: black;
+}
 
-    .fixed-bg {
-      background: url('/images/index/index_01.jpg') center/cover no-repeat !important;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
+.fixed-bg {
+  background: url('/images/index/index_01.jpg') center/cover no-repeat !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
 
-    .fixed-bg video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: auto;
-      z-index: 0; /* видео — на заднем плане */
-      opacity: 0;
-      transition: opacity 1.5s ease-out;
-    }
+.fixed-bg video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: auto;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
 
-    .fixed-bg video.fade-in-video {
-      opacity: 1;
-    }
+.fixed-bg video.fade-in-video {
+  opacity: 1;
+}
 
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 2px;
-      height: 0%;
-      background: linear-gradient(to bottom, #e22e2e, #fff);
-      border-radius: 1px;
-      z-index: 10001;
-      transition: height 0.05s ease-out;
-      opacity: 0.8;
-    }
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, #e22e2e, #fff);
+  border-radius: 1px;
+  z-index: 10001;
+  transition: height 0.05s ease-out;
+  opacity: 0.8;
+}
 
-    .slide-counter {
-      position: fixed;
-      top: 5px;
-      right: 5px;
-      font-family: 'Montserrat Alternates', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.7);
-      z-index: 2;
-      opacity: 0.8;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 6px 10px;
-      border-radius: 8px;
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+.slide-counter {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-    .slide-counter:hover {
-      opacity: 1;
-    }
+.slide-counter:hover {
+  opacity: 1;
+}
 
-    .slide-counter .current {
-      color: white;
-      font-weight: 700;
-      margin-right: 2px;
-    }
+.slide-counter .current {
+  color: white;
+  font-weight: 700;
+  margin-right: 2px;
+}
 
-    .slide-counter .total {
-      color: rgba(255, 255, 255, 0.6);
-    }
+.slide-counter .total {
+  color: rgba(255, 255, 255, 0.6);
+}
 
-    @media (max-width: 768px) {
-      .slide-counter {
-        display: none !important;
-      }
-    }
+@media (max-width: 768px) {
+  .slide-counter {
+    display: none !important;
+  }
+}
 
 .teacher-info {
   position: absolute;
@@ -688,18 +741,12 @@ body.loaded .slide-title {
   user-select: none;
   max-width: 85vw;
   z-index: 3;
-  /* ВАЖНО: только один transition */
   transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .teacher-info.animate-in {
   transform: translateY(-50%) translateX(0);
 }
-
-
-
-
-
 
 /* ================== ЗАТЕМНЕНИЕ ================== */
 .dim-overlay,
@@ -723,7 +770,6 @@ body.loaded .slide-title {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* Исчезает ТОЛЬКО в полноэкранном режиме */
 html.fullscreen-mode .dim-overlay,
 html.fullscreen-mode .video-overlay {
   opacity: 0;
@@ -742,58 +788,178 @@ html.fullscreen-mode .video-overlay {
   transition: opacity 0.4s ease-out;
 }
 
-/* УБИРАЕМ затемнение в полноэкранном режиме */
 html.fullscreen-mode #first::before {
   opacity: 0;
 }
 
+.fullscreen-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  z-index: 9998;
+  transition: opacity 0.4s ease;
+}
 
+html.fullscreen-enter .fullscreen-overlay,
+html.fullscreen-exit .fullscreen-overlay {
+  opacity: 1;
+}
 
-    .fullscreen-overlay {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0;
-      z-index: 9998;
-      transition: opacity 0.4s ease;
-    }
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(226, 46, 46, 0.7);
+  }
 
-    html.fullscreen-enter .fullscreen-overlay,
-    html.fullscreen-exit .fullscreen-overlay {
-      opacity: 1;
-    }
+  70% {
+    box-shadow: 0 0 0 6px rgba(226, 46, 46, 0);
+  }
 
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(226, 46, 46, 0.7);
-      }
+  100% {
+    box-shadow: 0 0 0 0 rgba(226, 46, 46, 0);
+  }
+}
 
-      70% {
-        box-shadow: 0 0 0 6px rgba(226, 46, 46, 0);
-      }
+@media (max-width: 768px) {
+  .navigation {
+    display: none !important;
+  }
+}
 
-      100% {
-        box-shadow: 0 0 0 0 rgba(226, 46, 46, 0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .navigation {
-        display: none !important;
-      }
-    }
 @media (max-width: 480px) {
-  .poem-text { left: 6px; font-size: 24px; max-width: 90vw; transform: translateY(-50%) translateX(-70px); }
-  .poem-esse { left: 6px; font-size: 26px; }
-  .mamik-img { width: 38vmin; max-width: 180px; top: 18px; right: 8px; }
+  .poem-text {
+    left: 6px;
+    font-size: 24px;
+    max-width: 90vw;
+    transform: translateY(-50%) translateX(-70px);
+  }
+
+  .poem-esse {
+    left: 6px;
+    font-size: 26px;
+  }
+
+  .mamik-img {
+    width: 38vmin;
+    max-width: 180px;
+    top: 18px;
+    right: 8px;
+  }
 }
 
 @media (max-width: 360px) {
-  .poem-text { left: 6px; font-size: 16px; max-width: 90vw; transform: translateY(-50%) translateX(-70px); }
-  .poem-esse { left: 6px; font-size: 14px; }
-  .mamik-img { width: 38vmin; max-width: 180px; top: 8px; right: 8px; }
+  .poem-text {
+    left: 6px;
+    font-size: 16px;
+    max-width: 90vw;
+    transform: translateY(-50%) translateX(-70px);
+  }
+
+  .poem-esse {
+    left: 6px;
+    font-size: 14px;
+  }
+
+  .mamik-img {
+    width: 38vmin;
+    max-width: 180px;
+    top: 8px;
+    right: 8px;
+  }
+}
+.fairy-img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 30vmin;
+  max-width: 300px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+}
+/* Анимация и положение "Фея" */
+#third .fairy-img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 30vmin;
+  max-width: 300px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+}
+
+#third .fairy-img.animate-in {
+  opacity: 1;
+  transform: translate(100%, 40%) scale(1);
+}
+/* Анимация и положение "Тигр" — старт: правый верхний угол, финиш: центр */
+#third .tiger-img {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 30vmin;
+  max-width: 400px;
+  opacity: 0;
+  transform: translate(50%, -50%) scale(0.6);
+  transition: opacity 1.2s ease, transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+}
+
+#third .tiger-img.animate-in {
+  opacity: 1;
+  transform: translate(-100%, 50%) scale(1);
+}
+/* Анимация и положение "Белка" — из нижнего левого угла к центру */
+#third .squirrel-img {
+  position: absolute;
+  bottom: -10%;
+  /* старт — снизу */
+  left: 25%;
+  /* старт — слева */
+  width: 30vmin;
+  max-width: 280px;
+  opacity: 0;
+  /* старт: чуть ниже и левее — как у других */
+  transform: translate(-50%, 50%) scale(0.6);
+  transition: opacity 1.2s ease, transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+}
+
+#third .squirrel-img.animate-in {
+  opacity: 1;
+  /* движение к центру: вверх и вправо */
+  transform: translate(100%, -50%) scale(1);
+}
+/* Анимация и положение "Лягушка" — из правого нижнего угла к центру */
+#third .frog-img {
+  position: absolute;
+  bottom: 38%;
+  /* близко к низу */
+  right: 20%;
+  /* близко к правому краю */
+  width: 40vmin;
+  max-width: 800px;
+  opacity: 0;
+  /* старт: чуть ниже и правее */
+  transform: translate(50%, 50%) scale(0.6);
+  transition: opacity 1.2s ease, transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+}
+
+#third .frog-img.animate-in {
+  opacity: 1;
+  /* движение к центру: влево и вверх */
+  transform: translate(-100%, -50%) scale(1);
 }

@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('✅ DOM загружен. Запуск скрипта...');
+
   // === ОПРЕДЕЛЕНИЕ УСТРОЙСТВА ===
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (isTouchDevice) {
@@ -7,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.classList.add('no-touch');
   }
 
-  // === ЭЛЕМЕНТЫ ===
+  // === ОСНОВНЫЕ ЭЛЕМЕНТЫ ===
   const cursor = document.querySelector('.custom-cursor');
   const dot = document.querySelector('.cursor-dot');
   const controls = document.querySelector('.slide-controls');
@@ -226,6 +228,18 @@ document.addEventListener("DOMContentLoaded", () => {
           }, 600);
         }
       }
+
+      // Анимация заголовка на третьем слайде
+      if (entry.target.id === 'third' && entry.isIntersecting) {
+        const title = entry.target.querySelector('.slide-creative-title');
+        if (title) {
+          setTimeout(() => {
+            if (!title.classList.contains('visible')) {
+              title.classList.add('visible');
+            }
+          }, 500);
+        }
+      }
     });
   }, { threshold: 0.5 });
 
@@ -284,7 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlide = 0;
 
   function getSlidePositions() {
-    return Array.from(sections).map(s => s.offsetTop);
+    return Array.from(sections).map(s => {
+      const rect = s.getBoundingClientRect();
+      return rect.top + window.scrollY;
+    });
   }
 
   function scrollToSlide(index) {
@@ -294,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetY = positions[index];
     const start = window.scrollY;
     const startTime = performance.now();
-    const duration = 800;
+    const duration = 600;
 
     function animateScroll(currentTime) {
       const elapsed = currentTime - startTime;
@@ -365,6 +382,19 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('scroll', updateCurrentSlide, { passive: true });
   updateCurrentSlide();
 
+  // === ПЛАВНЫЙ ПЕРЕХОД ПО КЛИКУ В НАВИГАЦИИ ===
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const targetSlide = document.getElementById(targetId);
+      if (!targetSlide) return;
+      const slideIndex = Array.from(sections).indexOf(targetSlide);
+      if (slideIndex === -1 || isAnimating) return;
+      scrollToSlide(slideIndex);
+    });
+  });
+
   // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
   window.addEventListener('load', () => {
     document.documentElement.classList.add('no-smooth');
@@ -385,6 +415,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Сброс
     const teacherInfo = document.querySelector('.teacher-info');
     const resume = document.querySelector('.resume-link');
+    const poem = document.querySelector('.poem-text');
+    const author = document.querySelector('.poem-author');
+    const esse = document.querySelector('.poem-esse');
 
     if (teacherInfo) {
       teacherInfo.style.transform = 'translateY(-50%) translateX(-100vw)';
@@ -393,8 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resume.style.transform = 'translateY(1000px)';
     }
 
-    // Анимация стиха
-    const poem = document.querySelector('.poem-text');
     if (poem) {
       setTimeout(() => {
         poem.style.opacity = '1';
@@ -402,7 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 800);
     }
 
-    const author = document.querySelector('.poem-author');
     if (author) {
       setTimeout(() => {
         author.style.opacity = '1';
@@ -410,7 +440,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1600);
     }
 
-    const esse = document.querySelector('.poem-esse');
     if (esse) {
       setTimeout(() => {
         esse.classList.add('show');
@@ -424,7 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
 
-    // Проверка второго слайда
     setTimeout(() => {
       const secondSlide = document.querySelector('#second');
       if (!secondSlide) return;
@@ -445,5 +473,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   });
 
-  console.log('✅ Всё работает: курсор, прокрутка, анимации');
+  // === АНИМАЦИЯ ГЕРОЕВ НА ТРЕТЬЕМ СЛАЙДЕ ===
+  const h2 = document.querySelector('.slide-creative-title');
+  const fairy = document.querySelector('#third .fairy-img');
+  const tiger = document.querySelector('#third .tiger-img');
+  const squirrel = document.querySelector('#third .squirrel-img');
+  const frog = document.querySelector('#third .frog-img');
+
+  if (h2 && fairy) {
+    const h2Observer = new MutationObserver(() => {
+      if (h2.classList.contains('visible')) {
+        setTimeout(() => {
+          fairy.classList.add('animate-in');
+        }, 300);
+        h2Observer.disconnect();
+      }
+    });
+    h2Observer.observe(h2, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  if (fairy && tiger) {
+    const fairyObserver = new MutationObserver(() => {
+      if (fairy.classList.contains('animate-in')) {
+        setTimeout(() => {
+          tiger.classList.add('animate-in');
+          console.log('🐯 Тигр: появился!');
+        }, 800);
+        fairyObserver.disconnect();
+      }
+    });
+    fairyObserver.observe(fairy, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  if (tiger && squirrel) {
+    const tigerObserver = new MutationObserver(() => {
+      if (tiger.classList.contains('animate-in')) {
+        setTimeout(() => {
+          squirrel.classList.add('animate-in');
+          console.log('🐿️ Белка: прыгнула!');
+        }, 900);
+        tigerObserver.disconnect();
+      }
+    });
+    tigerObserver.observe(tiger, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  if (squirrel && frog) {
+    const squirrelObserver = new MutationObserver(() => {
+      if (squirrel.classList.contains('animate-in')) {
+        setTimeout(() => {
+          frog.classList.add('animate-in');
+          console.log('🐸 Лягушка: прыгнула в центр!');
+        }, 900);
+        squirrelObserver.disconnect();
+      }
+    });
+    squirrelObserver.observe(squirrel, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  console.log('✅ Всё работает: курсор, прокрутка, анимации, герои сказки');
 });
