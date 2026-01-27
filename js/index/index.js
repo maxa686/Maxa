@@ -292,70 +292,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === ПОЛНОЭКРАННЫЙ СКРОЛЛ ===
+      // === ПОЛНОЭКРАННЫЙ СКРОЛЛ — МГНОВЕННЫЙ ПЕРЕХОД (без анимации) ===
   const slideCount = sections.length;
-  let isAnimating = false;
+  let isScrolling = false;
   let currentSlide = 0;
 
+  // Получаем позиции всех слайдов
   function getSlidePositions() {
     return Array.from(sections).map(s => {
       const rect = s.getBoundingClientRect();
-      return rect.top + window.scrollY;
+      return window.scrollY + rect.top;
     });
   }
 
-  function scrollToSlide(index) {
-    if (index < 0 || index >= slideCount || isAnimating) return;
-    isAnimating = true;
-    const positions = getSlidePositions();
-    const targetY = positions[index];
-    const start = window.scrollY;
-    const startTime = performance.now();
-    const duration = 600;
+  // Перейти к слайду мгновенно
+  function goToSlide(index) {
+    if (index < 0 || index >= slideCount || isScrolling) return;
+    isScrolling = true;
+    currentSlide = index;
+    window.scrollTo(0, getSlidePositions()[index]);
 
-    function animateScroll(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const currentY = start + (targetY - start) * ease;
-      window.scrollTo(0, currentY);
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      } else {
-        isAnimating = false;
-        currentSlide = index;
-      }
-    }
-    requestAnimationFrame(animateScroll);
+    // Даём время на отрисовку, потом разрешаем новый скролл
+    setTimeout(() => {
+      isScrolling = false;
+    }, 200); // Короткая "антидрожь"
   }
 
-  function updateCurrentSlide() {
-    const scrollY = window.scrollY + window.innerHeight / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    getSlidePositions().forEach((pos, i) => {
-      const dist = Math.abs(pos + sections[i].offsetHeight / 2 - scrollY);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    });
-    currentSlide = closest;
-  }
-
-  // === КОЛЕСО МЫШИ ===
+  // === КОЛЕСО МЫШИ — МГНОВЕННЫЙ ОТКЛИК БЕЗ ЗАДЕРЖЕК ===
   document.addEventListener('wheel', (e) => {
-    if (isAnimating) return;
-    if (e.deltaY > 0 && currentSlide < slideCount - 1) {
+    // Игнорируем маленькие движения (трекпад, вибрация)
+    if (Math.abs(e.deltaY) < 50) return;
+
+    // Если уже "в движении" — не реагируем
+    if (isScrolling) {
       e.preventDefault();
-      scrollToSlide(currentSlide + 1);
-    } else if (e.deltaY < 0 && currentSlide > 0) {
+      return;
+    }
+
+    let direction = e.deltaY > 0 ? 1 : -1;
+    const nextSlide = currentSlide + direction;
+
+    if (nextSlide >= 0 && nextSlide < slideCount) {
       e.preventDefault();
-      scrollToSlide(currentSlide - 1);
+      goToSlide(nextSlide);
     }
   }, { passive: false });
 
-  // === ЖЕСТЫ ===
+  // === ЖЕСТЫ — ТАКЖЕ МГНОВЕННО ===
   let touchStartY = 0;
   let touchEndY = 0;
 
@@ -368,19 +351,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   document.addEventListener('touchend', () => {
-    if (isAnimating) return;
-    const threshold = 50;
+    if (isScrolling) return;
+    const threshold = 40;
     const diff = touchStartY - touchEndY;
+
     if (Math.abs(diff) < threshold) return;
-    if (diff > 0 && currentSlide < slideCount - 1) {
-      scrollToSlide(currentSlide + 1);
-    } else if (diff < 0 && currentSlide > 0) {
-      scrollToSlide(currentSlide - 1);
+
+    let direction = diff > 0 ? 1 : -1; // 1 = вниз
+    const nextSlide = currentSlide + direction;
+
+    if (nextSlide >= 0 && nextSlide < slideCount) {
+      goToSlide(nextSlide);
     }
   });
 
+  // === ОБНОВЛЕНИЕ ТЕКУЩЕГО СЛАЙДА ПРИ РУЧНОМ СКРОЛЛЕ ===
+  function updateCurrentSlide() {
+    const scrollY = window.scrollY + window.innerHeight / 2;
+    const positions = getSlidePositions();
+    let closest = 0;
+    let minDist = Infinity;
+    positions.forEach((pos, i) => {
+      const dist = Math.abs(pos - scrollY);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    });
+    currentSlide = closest;
+  }
+
   window.addEventListener('scroll', updateCurrentSlide, { passive: true });
-  updateCurrentSlide();
+  updateCurrentSlide(); // При загрузке
+
+
 
   // === ПЛАВНЫЙ ПЕРЕХОД ПО КЛИКУ В НАВИГАЦИИ ===
   links.forEach(link => {
@@ -394,6 +398,18 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollToSlide(slideIndex);
     });
   });
+
+  document.querySelectorAll('.nav-line').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
 
   // === АНИМАЦИЯ ПРИ ЗАГРУЗКЕ ===
   window.addEventListener('load', () => {
@@ -485,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (h2.classList.contains('visible')) {
         setTimeout(() => {
           fairy.classList.add('animate-in');
-        }, 300);
+        }, 200);
         h2Observer.disconnect();
       }
     });
@@ -498,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           tiger.classList.add('animate-in');
           console.log('🐯 Тигр: появился!');
-        }, 800);
+        }, 400);
         fairyObserver.disconnect();
       }
     });
@@ -511,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           squirrel.classList.add('animate-in');
           console.log('🐿️ Белка: прыгнула!');
-        }, 900);
+        }, 500);
         tigerObserver.disconnect();
       }
     });
@@ -524,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           frog.classList.add('animate-in');
           console.log('🐸 Лягушка: прыгнула в центр!');
-        }, 900);
+        }, 500);
         squirrelObserver.disconnect();
       }
     });
