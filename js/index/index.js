@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!targetSlide) return;
       const slideIndex = Array.from(sections).indexOf(targetSlide);
       if (slideIndex === -1 || isAnimating) return;
-      scrollToSlide(slideIndex);
+      goToSlide(slideIndex);
     });
   });
 

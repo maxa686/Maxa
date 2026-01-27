@@ -52,7 +52,10 @@
   font-style: normal;
   font-display: swap;
 }
-
+a {
+  all: unset;/* Все стили элемента сбрасываются в ноль. */
+  cursor: pointer;
+}
 
 /* ================== ЭФФЕКТ ПЛАВНОЙ ЗАГРУЗКИ ================== */
 .loading-overlay {
@@ -1134,6 +1137,3 @@ html.fullscreen-exit .fullscreen-overlay {
 
   }
 }
-
-
-
