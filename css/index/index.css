@@ -424,7 +424,7 @@ a::after {
 }
 
 #second::before {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 #third::before {
@@ -432,23 +432,23 @@ a::after {
 }
 
 #fourth::before {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 #fifth::before {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #six::before {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 #seven::before {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #eight::before {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
 }
 .slide::before,
 #first::before,
