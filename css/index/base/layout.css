@@ -119,11 +119,11 @@ body.loaded .slide-title-text,
     }
 }
 
-/* === СКРЫТЬ #bg-layer, ЕСЛИ НЕ НУЖЕН === */
-#bg-layer {
-    display: none;
-}
-.fullscreen-mode #bg-layer,
-.fullscreen-mode #first .fixed-bg::after {
-    opacity: 0;
+@keyframes subtlePulse {
+    0% {
+        opacity: 0.06;
+    }
+    100% {
+        opacity: 0.09;
+    }
 }
