@@ -397,3 +397,7 @@
 #fourth .fifth-photo {
     animation: swing-from-top-alt-4 6s ease-in-out infinite;
 }
+.centered-photo {
+    position: relative;
+    z-index: 80;
+}
