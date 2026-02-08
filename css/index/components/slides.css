@@ -399,5 +399,7 @@
 }
 .centered-photo {
     position: relative;
-    z-index: 80;
+    z-index: 100;
+    will-change: transform;
+    pointer-events: none;
 }
