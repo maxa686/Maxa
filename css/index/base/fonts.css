@@ -1,0 +1,67 @@
+/* ================== ПОДКЛЮЧЕНИЕ ШРИФТОВ ================== */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Huninn&family=Zen+Kurenaido&display=swap');
+
+@font-face {
+  font-family: 'Rahovets';
+  src: url('/fonts/Rahovets/Rahovets.eot');
+  src: url('/fonts/Rahovets/Rahovets.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Rahovets/Rahovets.woff2') format('woff2'),
+    url('/fonts/Rahovets/Rahovets.woff') format('woff'),
+    url('/fonts/Rahovets/Rahovets.ttf') format('truetype'),
+    url('/fonts/Rahovets/Rahovets.svg#Rahovets') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ethna';
+  src: url('/fonts/Ethna-Thin/Ethna-Thin.eot');
+  src: url('/fonts/Ethna-Thin/Ethna-Thin.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.woff2') format('woff2'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.woff') format('woff'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.ttf') format('truetype'),
+    url('/fonts/Ethna-Thin/Ethna-Thin.svg#Ethna-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korataki';
+  src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot');
+  src: url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff2') format('woff2'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.woff') format('woff'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.ttf') format('truetype'),
+    url('/fonts/Korataki-ExtraLight/Korataki-ExtraLight.svg#Korataki-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'mr_akronimg';
+  src: url('/fonts/mr_akronimg/mr_akronimg.eot');
+  src: url('/fonts/mr_akronimg/mr_akronimg.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/mr_akronimg/mr_akronimg.woff2') format('woff2'),
+    url('/fonts/mr_akronimg/mr_akronimg.woff') format('woff'),
+    url('/fonts/mr_akronimg/mr_akronimg.ttf') format('truetype'),
+    url('/fonts/mr_akronimg/mr_akronimg.svg#mr_akronimg') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Novoposelensky';
+  src: url('/fonts/Novoposelensky/NovoposelenskyRegular.eot');
+  src: url('/fonts/Novoposelensky/NovoposelenskyRegular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Novoposelensky/NovoposelenskyRegular.woff2') format('woff2'),
+    url('/fonts/Novoposelensky/NovoposelenskyRegular.woff') format('woff'),
+    url('/fonts/Novoposelensky/NovoposelenskyRegular.ttf') format('truetype'),
+    url('/fonts/Novoposelensky/NovoposelenskyRegular.svg#Novoposelensky') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}

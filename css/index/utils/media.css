@@ -1,0 +1,157 @@
+/* ================== АДАПТИВНЫЕ СТИЛИ (media.css) ================== */
+
+/* =========== МОБИЛЬНЫЕ УСТРОЙСТВА =========== */
+
+/* Убираем счётчик слайдов на маленьких экранах */
+@media (max-width: 768px) {
+    .slide-counter {
+        display: none !important;
+    }
+
+    /* Скрываем навигацию */
+    .navigation {
+        display: none !important;
+    }
+}
+
+/* =========== ЭКРАНЫ ДО 480px (маленькие смартфоны) =========== */
+@media (max-width: 480px) {
+    /* Адаптация стиха */
+    .poem-text {
+        left: 6px;
+        font-size: 24px;
+        max-width: 90vw;
+        transform: translateY(-50%) translateX(-70px);
+    }
+
+    /* Адаптация "эссе" и "резюме" */
+    .poem-esse,
+    .resume-link {
+        left: 6px;
+        font-size: 26px;
+    }
+
+    /* Адаптация мамика */
+    .mamik-img {
+        width: 38vmin;
+        max-width: 180px;
+        top: 18px;
+        right: 8px;
+    }
+}
+
+/* =========== ЭКРАНЫ ДО 360px (очень узкие) =========== */
+@media (max-width: 360px) {
+    /* Стих */
+    .poem-text {
+        font-size: 16px;
+        transform: translateY(-50%) translateX(-70px);
+    }
+
+    /* Эссе и резюме */
+    .poem-esse,
+    .resume-link {
+        font-size: 14px;
+    }
+
+    /* Мамика */
+    .mamik-img {
+        top: 8px;
+        right: 8px;
+    }
+
+    /* Заголовок "Истории учителя" */
+    .slide-title {
+        font-size: 6.5vmin;
+        top: 0%;
+        transform: translateY(-100%) scale(0.7);
+    }
+
+    body.loaded .slide-title {
+        transform: translateY(0) scale(0.75);
+    }
+}
+
+/* =========== РЕЖИМ ПОЛНОГО ЭКРАНА =========== */
+html.fullscreen-mode {
+    cursor: none;
+}
+
+html.fullscreen-mode body {
+    overflow: hidden;
+}
+
+html.fullscreen-mode .navigation,
+html.fullscreen-mode .slide-counter,
+html.fullscreen-mode .slide-title,
+html.fullscreen-mode .poem-text,
+html.fullscreen-mode .poem-esse,
+html.fullscreen-mode .mamik-img {
+    display: none !important;
+}
+
+/* Плавное появление fullscreen-overlay */
+html.fullscreen-enter .fullscreen-overlay,
+html.fullscreen-exit .fullscreen-overlay {
+    opacity: 1;
+}
+
+/* === АДАПТИВНЫЙ ПЛЕЕР RUTUBE — УЛУЧШЕННАЯ ВЕРСИЯ === */
+
+/* === ИСПРАВЛЕНИЕ: hover на nav-line НЕ пропадает === */
+
+#fifth .rutube-player-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 5;
+    pointer-events: none; /* ❌ Не реагирует на мышь */
+}
+
+#fifth .rutube-player-wrapper iframe {
+    pointer-events: auto; /* ✅ Только iframe ловит клики */
+}
+
+/* Плеер — адаптивный, с увеличенной шириной на больших экранах */
+.rutube-player-wrapper iframe {
+    width: 100%;
+    max-width: 1100px; /* Было 720 → стало 1100 */
+    height: auto;
+    aspect-ratio: 16 / 9; /* Сохраняет пропорции 16:9 */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* На экранах до 768px (планшеты) */
+@media (max-width: 768px) {
+    .rutube-player-wrapper {
+        margin: 30px auto;
+        padding: 0 10px;
+    }
+
+    .rutube-player-wrapper iframe {
+        max-width: 90%; /* Не больше 90% ширины */
+    }
+}
+
+/* На экранах до 480px (маленькие телефоны) */
+@media (max-width: 480px) {
+    .rutube-player-wrapper {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .rutube-player-wrapper iframe {
+        max-width: 80%; /* Почти на всю ширину */
+    }
+
+    /* Подстраиваем заголовок */
+    .slide-1september-title {
+        font-size: 1.4rem;
+        margin-top: 11px;
+    }
+}

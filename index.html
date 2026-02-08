@@ -5,7 +5,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>MaxaPupsa</title>
-  <link rel="stylesheet" href="css/index/index.css" />
+  <!-- Базовые стили -->
+<link rel="stylesheet" href="css/index/base/fonts.css">
+<link rel="stylesheet" href="css/index/base/loading.css">
+<link rel="stylesheet" href="css/index/base/layout.css">
+
+<!-- Компоненты -->
+<link rel="stylesheet" href="css/index/components/cursor.css">
+<link rel="stylesheet" href="css/index/components/navigation.css">
+<link rel="stylesheet" href="css/index/components/slides.css">
+<link rel="stylesheet" href="css/index/components/titles.css">
+
+<!-- Контент -->
+<link rel="stylesheet" href="css/index/content/teacher-info.css">
+<link rel="stylesheet" href="css/index/content/poem.css">
+<link rel="stylesheet" href="css/index/content/characters.css">
+
+<!-- Адаптивность -->
+<link rel="stylesheet" href="css/index/utils/media.css">
 </head>
 
 <body>
@@ -41,7 +58,9 @@
 
     <!-- Первый слайд -->
     <section id="first" class="slide">
-      <h1 class="slide-title">Истории учителя</h1>
+<h1 class="slide-title">
+  <span class="slide-title-text">Истории учителя</span>
+</h1>
       <div class="fixed-bg">
         <video muted loop playsinline preload="metadata" poster="/images/index/index_01.jpg" class="video-desktop">
           <source src="video/index_01.mp4" type="video/mp4" />
@@ -55,7 +74,11 @@
         Твои непослушные дети.<br>
         <span class="poem-author">М. Садовский.</span>
       </div>
-      <div class="poem-esse"><span>эссе на тему...</span></div>
+
+      <!--- Анимация ЭССЕ -->
+      <div class="poem-esse">
+        <a href="esse.html" target="_blank"><span>эссе на тему...</span></a>
+      </div>
       <div class="slide-controls">
         <button class="fullscreen-btn">full</button>
         <button class="play-btn">play</button>
@@ -70,7 +93,10 @@
         стаж работы учителем - 30 лет.<br>
         I квалификационная категория.
       </div>
-      <div class="resume-link">резюме</div>
+      <!-- resume-link -->
+      <div class="resume-link">
+        <a href="files/resume.pdf" target="_blank"><span>резюме</span></a>
+      </div>
     </section>
 
     <!-- Третий слайд -->
@@ -82,12 +108,54 @@
       <img src="images/index/frog.png" alt="Лягушка" class="frog-img" />
     </section>
 
-    <!-- Остальные слайды -->
-    <section id="fourth" class="slide"></section>
-    <section id="fifth" class="slide"></section>
-    <section id="six" class="slide"></section>
-    <section id="seven" class="slide"></section>
-    <section id="eight" class="slide"></section>
+<!-- Четвёртый слайд -->
+<section id="fourth" class="slide">
+<h2 class="slide-photoalbum-title slide-title-animated" data-title="Фотоальбом">
+  <a href="#"><span>Фотоальбом</span></a>
+</h2>
+
+  <!-- Фото 1 -->
+  <img src="images/index/photoschool_1.png" alt="Фото 1" class="centered-photo">
+
+  <!-- Фото 2 -->
+  <img src="images/index/photoschool_2.png" alt="Фото 2" class="centered-photo second-photo">
+
+  <!-- Фото 3 -->
+  <img src="images/index/photoschool_3.png" alt="Фото 3" class="centered-photo third-photo">
+
+  <!-- Фото 4 -->
+  <img src="images/index/photoschool_4.png" alt="Фото 4" class="centered-photo fourth-photo">
+
+  <!-- Фото 5 -->
+  <img src="images/index/photoschool_5.png" alt="Фото 5" class="centered-photo fifth-photo">
+</section>
+<!-- Пятый слайд -->
+<section id="fifth" class="slide">
+  <h2 class="slide-1september-title slide-title-animated" data-title="1 Сентября">
+    <a href="#"><span>1 Сентября</span></a>
+  </h2>
+
+  <!-- Видеоплеер по центру -->
+  <div class="video-container">
+    <video class="center-video" controls>
+      <source src="video/1_September.mp4" type="video/mp4">
+      <source src="video/1september.webm" type="video/webm">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
+</section>
+    <!--Шестой слайд-->
+    <section id="six" class="slide">
+
+    </section>
+    <!--Седмой слайд-->
+    <section id="seven" class="slide">
+
+    </section>
+    <!--Восьмой слайд-->
+    <section id="eight" class="slide">
+
+    </section>
   </div>
 
 
@@ -95,8 +163,9 @@
   <!-- Мамика — ПОСЛЕ контейнера -->
   <img src="images/index/Mamik.png" alt="Мамик" class="mamik-img" />
 
-  <!-- Скрипт -->
+  <!-- Скрипты -->
   <script src="js/index/index.js" defer></script>
+  <script src="js/index/animations.js" defer></script>
 </body>
 
 </html>

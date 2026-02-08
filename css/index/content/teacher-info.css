@@ -1,0 +1,59 @@
+/* ================== ИНФОРМАЦИЯ ОБ УЧИТЕЛЕ ================== */
+.teacher-info {
+    position: absolute;
+    top: 40%;
+    left: 40px;
+    transform: translateY(-50%) translateX(-100vw);
+    font-family: "Ethna", sans-serif;
+    font-size: 8vmin;
+    color: #e22e2e;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.25), 0 0 20px rgba(255, 255, 255, 0.15);
+    line-height: 0.66;
+    white-space: pre-line;
+    pointer-events: none;
+    user-select: none;
+    max-width: 85vw;
+    z-index: 3;
+    transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.teacher-info.animate-in {
+    transform: translateY(-50%) translateX(0);
+}
+
+.resume-link {
+    position: absolute;
+    top: 70vh;
+    left: 30px;
+    font-size: 6vmin;
+    font-family: "Ethna", sans-serif;
+    color: #e22e2e;
+    pointer-events: auto;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    backface-visibility: hidden;
+    overflow: hidden;
+    transform: translateY(1000px);
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.resume-link::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 0%;
+    height: 100%;
+    color: #fff;
+    transition: width 0.8s ease;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.resume-link:hover::before {
+    width: 100%;
+}

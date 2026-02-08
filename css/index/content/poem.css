@@ -1,0 +1,83 @@
+/* ================== СТИХ НА ПЕРВОМ СЛАЙДЕ ================== */
+.poem-text {
+    position: absolute;
+    top: 45%;
+    left: 40px;
+    transform: translateY(-50%) translateX(-110%);
+    opacity: 0;
+    font-size: 8vmin;
+    font-family: "Ethna", sans-serif;
+    color: #e22e2e;
+    text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+    white-space: pre-line;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    line-height: 0.6;
+    max-width: 85vw;
+    /* Анимация начнётся через 2.6s после body.loaded */
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s, opacity 1.6s ease-out;
+    z-index: 2;
+}
+
+.poem-text .poem-author {
+    display: block;
+    text-align: right;
+    margin-top: 0.3em;
+    font-size: 0.8em;
+}
+
+/* ================== ЭССЕ НА ТЕМУ... ================== */
+.poem-esse {
+    position: absolute;
+    top: 70vh;
+    left: 80px;
+    font-size: 6vmin;
+    font-family: "Ethna", sans-serif;
+    white-space: nowrap;
+    backface-visibility: hidden;
+    z-index: 3;
+    user-select: none;
+    pointer-events: auto;
+    cursor: pointer;
+
+    /* Полное скрытие до загрузки */
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: 70% center;
+}
+
+body.loaded .poem-esse {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.5s, opacity 0.7s ease-out;
+}
+
+/* Одинаковый стиль ссылки — как у resume-link */
+.poem-esse a,
+.resume-link a {
+    position: relative;
+    display: inline-block;
+    font-size: 6vmin;
+    font-family: "Ethna", sans-serif;
+    color: #e22e2e; /* Ярко-красный */
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.poem-esse a span,
+.resume-link a span {
+    /* Градиент: белый (слева) + красный (справа) */
+    background-image: linear-gradient(to right, #fff 50%, #e22e2e 50%);
+    background-size: 200% 100%;
+    background-position: 100%; /* По умолчанию — виден красный */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.6s ease;
+    display: inline-block;
+}
+
+.poem-esse a:hover span,
+.resume-link a:hover span {
+    background-position: 0; /* Сдвигаем → белый появляется слева */
+}

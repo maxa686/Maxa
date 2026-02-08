@@ -1,0 +1,63 @@
+/* ================== ЭФФЕКТ ПЛАВНОЙ ЗАГРУЗКИ ================== */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #061314;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 1.2s ease-out 0.3s;
+}
+
+.loading-overlay.fade-out {
+    opacity: 0;
+}
+
+body {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease-out, visibility 1.2s;
+}
+
+body.loaded {
+    opacity: 1;
+    visibility: visible;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/images/index/pattern.png"), url("/images/index/pattern.png");
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 1;
+    mix-blend-mode: multiply;
+    transition: opacity 0.4s ease-out;
+}
+/* === FULLSCREEN: скрываем паттерн === */
+.fullscreen-mode body::before {
+    opacity: 0;
+}
+
+/* Гарантировать, что кастомный курсор остаётся */
+body:fullscreen,
+body.fullscreen {
+    cursor: default;
+}
+
+.custom-cursor,
+.cursor-dot {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

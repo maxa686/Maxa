@@ -1,0 +1,101 @@
+/* =========== АНИМАЦИЯ ГЕРОЕВ НА ТРЕТЬЕМ СЛАЙДЕ =========== */
+
+/* Общие стили для всех персонажей */
+#third .fairy-img,
+#third .tiger-img,
+#third .squirrel-img,
+#third .frog-img {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Фея */
+#third .fairy-img {
+    top: 0%;
+    left: 10%;
+    width: 30vmin;
+    max-width: 300px;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+#third .fairy-img.animate-in {
+    opacity: 1;
+    transform: translate(100%, 40%) scale(1);
+}
+
+/* Тигр */
+#third .tiger-img {
+    top: 40%;
+    right: 10%;
+    width: 30vmin;
+    max-width: 400px;
+    transform: translate(50%, -50%) scale(0.6);
+}
+
+#third .tiger-img.animate-in {
+    opacity: 1;
+    transform: translate(-100%, 50%) scale(1);
+}
+
+/* Белка */
+#third .squirrel-img {
+    bottom: -10%;
+    left: 10%;
+    width: 30vmin;
+    max-width: 280px;
+    transform: translate(0, 50%) scale(0.6);
+}
+
+#third .squirrel-img.animate-in {
+    opacity: 1;
+    transform: translate(100%, -50%) scale(1);
+}
+
+/* Лягушка */
+#third .frog-img {
+    bottom: 40%;
+    right: 5%;
+    width: 40vmin;
+    max-width: 800px;
+    transform: translate(50%, 50%) scale(0.6);
+}
+
+#third .frog-img.animate-in {
+    opacity: 1;
+    transform: translate(-100%, -50%) scale(1);
+}
+
+/* =========== АДАПТИВНОСТЬ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ (до 320px) =========== */
+@media (max-width: 320px) {
+    #third .fairy-img,
+    #third .tiger-img,
+    #third .squirrel-img,
+    #third .frog-img {
+        width: 24vmin;
+        max-width: 260px;
+        transition: opacity 1.1s ease, transform 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    #third .fairy-img {
+        left: 0;
+    }
+
+    #third .tiger-img {
+        right: 1%;
+        top: 50%;
+    }
+
+    #third .squirrel-img {
+        bottom: 0;
+        left: -8%;
+    }
+
+    #third .frog-img {
+        right: -5%;
+    }
+}

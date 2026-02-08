@@ -1,0 +1,215 @@
+/* Анимация заголовка H1 "Истории учителя" как у заголовков H2 */
+.slide-title {
+    position: absolute;
+    top: -4.7%;
+    left: 30%;
+    transform: translateX(-50%) scale(0);
+    color: #e22e2e;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    font-size: 16vmin; /* фиксируем размер, а масштабируем */
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 1s ease;
+}
+
+.slide-title.visible {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+.slide-title.visible {
+    animation: fadeInTitle 1s ease-out forwards;
+}
+
+/* Анимация заголовка H2 Моё творчество */
+.slide-creative-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0vmin;
+    color: #e22e2e;
+    font-family: "mr_akronimg", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    transition: font-size 1s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 1s ease;
+}
+
+.slide-creative-title.visible {
+    font-size: 16vmin;
+    opacity: 1;
+}
+
+/* Эффект "заливки" текста при hover */
+.slide-creative-title::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: #fff;
+    text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+    transition: width 0.8s ease;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.slide-creative-title:hover::before {
+    width: 100%;
+}
+
+/* Адаптивность для заголовка */
+@media (max-width: 768px) {
+    .slide-creative-title {
+        font-size: 0vmin;
+    }
+    .slide-creative-title.visible {
+        font-size: 12vmin;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-creative-title.visible {
+        font-size: 12vmin;
+    }
+}
+
+/* Анимация заголовка Фотоальбом и 1 Сентября */
+.slide-photoalbum-title,
+.slide-1september-title {
+    position: absolute;
+    top: 2vmin;
+    left: 50%;
+    color: #e22e2e;
+    transform: translateX(-50%);
+    font-family: "Novoposelensky", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    transition: font-size 1s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 1s ease;
+    text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.12), 2px 2px 1px rgba(255, 255, 255, 0.1125),
+        4px 4px 1px rgba(255, 255, 255, 0.105), 6px 6px 1px rgba(255, 255, 255, 0.0975),
+        8px 8px 1px rgba(255, 255, 255, 0.09), 10px 10px 1px rgba(255, 255, 255, 0.0825),
+        12px 12px 1px rgba(255, 255, 255, 0.075), 14px 14px 1px rgba(255, 255, 255, 0.0675),
+        16px 16px 1px rgba(255, 255, 255, 0.06), 18px 18px 1px rgba(255, 255, 255, 0.0525),
+        20px 20px 1px rgba(255, 255, 255, 0.045), 22px 22px 1px rgba(255, 255, 255, 0.0375),
+        24px 24px 1px rgba(255, 255, 255, 0.03), 26px 26px 1px rgba(255, 255, 255, 0.0225),
+        28px 28px 1px rgba(255, 255, 255, 0.015), 30px 30px 1px rgba(255, 255, 255, 0.0075),
+        32px 32px 1px rgba(255, 255, 255, 0.00375), 34px 34px 1px rgba(255, 255, 255, 0.003),
+        36px 36px 1px rgba(255, 255, 255, 0.00225), 38px 38px 1px rgba(255, 255, 255, 0.0015);
+}
+
+.slide-photoalbum-title.visible,
+.slide-1september-title.visible {
+    font-size: 12vmin;
+    opacity: 1;
+}
+
+/* Эффект заливки при наведении */
+.slide-photoalbum-title::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: #fff;
+    text-shadow: 0 0 0 #000, 0 0 0 rgba(0, 0, 0, 0.8);
+    transition: width 0.8s ease;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.slide-photoalbum-title:hover::before {
+    width: 100%;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .slide-photoalbum-title,
+    .slide-1september-title {
+        -webkit-text-stroke-width: 1px;
+        font-size: 0vmin;
+    }
+}
+
+@media (max-width: 480px), (max-width: 320px) {
+    .slide-photoalbum-title.visible,
+    .slide-1september-title.visible {
+        font-size: 12vmin;
+    }
+}
+
+/* === АНИМАЦИЯ + HOVER ДЛЯ "МОЁ ТВОРЧЕСТВО" === */
+
+.slide-creative-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0vmin;
+    color: #e22e2e;
+    font-family: "mr_akronimg", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    pointer-events: auto;
+    user-select: none;
+    transition: font-size 1s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 1s ease;
+}
+
+.slide-creative-title.visible {
+    font-size: 16vmin;
+    opacity: 1;
+}
+
+/* Эффект заливки при наведении */
+.slide-creative-title::before {
+    content: "Моё творчество";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: #fff;
+    text-shadow: 0 0 2px #000, 0 0 4px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: width 0.8s ease;
+}
+
+.slide-creative-title:hover::before {
+    width: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .slide-creative-title {
+        font-size: 0vmin;
+    }
+    .slide-creative-title.visible {
+        font-size: 12vmin;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-creative-title.visible {
+        font-size: 12vmin;
+    }
+}

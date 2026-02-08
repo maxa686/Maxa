@@ -1,4 +1,14 @@
 {
-    "editor.aiStats.enabled": true,
-    "editor.autoIndentOnPaste": true
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.autoSave": "onFocusChange",
+  "html.autoClosingTags": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "path-intellisense.extensionOnImport": true,
+  "html-css-class-completion.enableEmmetSupport": true,
+  "[css]": {
+    "editor.defaultFormatter": "marbos.prettier-more"
+  }
 }
