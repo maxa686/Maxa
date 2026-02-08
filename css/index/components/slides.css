@@ -203,6 +203,7 @@
 /* Фоны для каждого слайда */
 #first {
     background-image: url("/images/index/index_01.jpg");
+    z-index: 15;
 }
 #second {
     background-image: url("/images/index/index_02.jpg");
@@ -224,6 +225,7 @@
 }
 #eight {
     background-image: url("/images/index/index_08.jpg");
+    z-index: 15;
 }
 
 /* Фиксированный фон для слайдов 2–8 */
